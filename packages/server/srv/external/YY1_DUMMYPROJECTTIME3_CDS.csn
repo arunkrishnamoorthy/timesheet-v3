@@ -1,0 +1,531 @@
+{
+ "meta": {
+  "creator": "cds-dk 7.3.2"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "YY1_DUMMYPROJECTTIME3_CDS": {
+   "kind": "service",
+   "@cds.external": true,
+   "@m.IsDefaultEntityContainer": "true",
+   "@sap.message.scope.supported": "true",
+   "@sap.supported.formats": "atom json xlsx"
+  },
+  "YY1_DUMMYPROJECTTIME3_CDS.P_Scbo_User": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.creatable": "false",
+   "@sap.updatable": "false",
+   "@sap.deletable": "false",
+   "@sap.addressable": "false",
+   "@sap.content.version": "1",
+   "@sap.label": "User",
+   "elements": {
+    "name": {
+     "key": true,
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "User",
+     "@sap.quickinfo": "User Name in User Master Record",
+     "notNull": true
+    },
+    "description": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.label": "Description",
+     "@sap.quickinfo": "Description of the Technical User Account"
+    }
+   }
+  },
+  "YY1_DUMMYPROJECTTIME3_CDS.YY1_DUMMYPROJECTTIME3": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.searchable": "true",
+   "@sap.content.version": "1",
+   "@sap.label": "DUMMYPROJECTTIME3",
+   "elements": {
+    "SAP_UUID": {
+     "key": true,
+     "type": "cds.UUID",
+     "@sap.label": "UUID",
+     "@sap.quickinfo": "16 Byte UUID in 16 Bytes (Raw Format)",
+     "notNull": true
+    },
+    "SAP_Description": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.label": "Description"
+    },
+    "SAP_CreatedDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@odata.Precision": 7,
+     "@sap.label": "Created On",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "SAP_CreatedByUser": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.text": "SAP_CreatedByUser_Text",
+     "@sap.label": "Created By",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "SAP_CreatedByUser_Text": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.label": "Description",
+     "@sap.quickinfo": "Description of the Technical User Account",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "SAP_LastChangedDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@odata.Precision": 7,
+     "@sap.label": "Last Changed On",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "SAP_LastChangedByUser": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.text": "SAP_LastChangedByUser_Text",
+     "@sap.label": "Last Changed By",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "SAP_LastChangedByUser_Text": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.label": "Description",
+     "@sap.quickinfo": "Description of the Technical User Account",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "ControllingArea": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.label": "ControllingArea"
+    },
+    "SenderCostCenter": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "SenderCostCenter"
+    },
+    "ReceiverCostCenter": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "ReceiverCostCenter"
+    },
+    "InternalOrder": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.label": "InternalOrder"
+    },
+    "ActivityType": {
+     "type": "cds.String",
+     "length": 6,
+     "@sap.label": "ActivityType"
+    },
+    "WBSelement": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "WBSelement"
+    },
+    "WorkItem": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "WorkItem"
+    },
+    "BillingControlCategory": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.label": "BillingControlCategory"
+    },
+    "PurchaseOrder": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "PurchaseOrder"
+    },
+    "PurchaseOrderItem": {
+     "type": "cds.String",
+     "length": 5,
+     "@sap.label": "PurchaseOrderItem"
+    },
+    "TimesheetTaskType": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.label": "TimesheetTaskType"
+    },
+    "TimeSheetTaskLevel": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.label": "TimeSheetTaskLevel"
+    },
+    "TimeSheetTaskComponent": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.label": "TimeSheetTaskComponent"
+    },
+    "TimeSheetNote": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "TimeSheetNote"
+    },
+    "RecordedHours": {
+     "type": "cds.Decimal",
+     "precision": 4,
+     "scale": 2,
+     "@sap.label": "RecordedHours"
+    },
+    "RecordedQuantity": {
+     "type": "cds.Decimal",
+     "precision": 4,
+     "scale": 2,
+     "@sap.label": "RecordedQuantity"
+    },
+    "HoursUnitOfMeasure": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.label": "HoursUnitOfMeasure"
+    },
+    "RejectionReason": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.label": "Rejection Reason"
+    },
+    "TimeSheetWrkLocCode": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.label": "TimeSheetWrkLocCode"
+    },
+    "TimeSheetOvertimeCategory": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.label": "TimeSheetOvertimeCategory"
+    },
+    "SenderPubSecFund": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "SenderPubSecFund"
+    },
+    "SendingPubSecFunctionalArea": {
+     "type": "cds.String",
+     "length": 16,
+     "@sap.label": "SendingPubSecFunctionalArea"
+    },
+    "SenderPubSecGrant": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.label": "SenderPubSecGrant"
+    },
+    "SenderPubSecBudgetPeriod": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "SenderPubSecBudgetPeriod"
+    },
+    "ReceiverPubSecFund": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "ReceiverPubSecFund"
+    },
+    "ReceiverPubSecFuncnlArea": {
+     "type": "cds.String",
+     "length": 16,
+     "@sap.label": "ReceiverPubSecFuncnlArea"
+    },
+    "ReceiverPubSecGrant": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.label": "ReceiverPubSecGrant"
+    },
+    "ReceiverPubSecBudgetPeriod": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "ReceiverPubSecBudgetPeriod"
+    },
+    "PersonWorkAgreementExternalI": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.label": "PersonWorkAgreementExternalID"
+    },
+    "CompanyCode": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.label": "CompanyCode"
+    },
+    "TimeSheetRecord": {
+     "type": "cds.String",
+     "length": 25,
+     "@sap.label": "TimeSheetRecord"
+    },
+    "PersonWorkAgreement": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.label": "PersonWorkAgreement"
+    },
+    "TimeSheetDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "TimeSheetDate"
+    },
+    "TimeSheetIsReleasedOnSave": {
+     "type": "cds.Boolean",
+     "@sap.label": "TimeSheetIsReleasedOnSave"
+    },
+    "TimeSheetPredecessorRecord": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.label": "TimeSheetPredecessorRecord"
+    },
+    "TimeSheetStatus": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.label": "TimeSheetStatus"
+    },
+    "TimeSheetIsExecutedInTestRun": {
+     "type": "cds.Boolean",
+     "@sap.label": "TimeSheetIsExecutedInTestRun"
+    },
+    "TimeSheetOperation": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.label": "TimeSheetOperation"
+    },
+    "ParentUUID": {
+     "type": "cds.String",
+     "length": 36,
+     "@sap.label": "ParentUUID"
+    },
+    "to_SAPSysAdminDataChangeUser": {
+     "@cds.ambiguous": "missing on condition?",
+     "type": "cds.Association",
+     "target": "YY1_DUMMYPROJECTTIME3_CDS.P_Scbo_User",
+     "keys": []
+    },
+    "to_SAPSysAdminDataCreateUser": {
+     "@cds.ambiguous": "missing on condition?",
+     "type": "cds.Association",
+     "target": "YY1_DUMMYPROJECTTIME3_CDS.P_Scbo_User",
+     "keys": []
+    }
+   }
+  },
+  "YY1_DUMMYPROJECTTIME3_CDS.YY1_DUMMYPROJECTTIME3Sap_upsert": {
+   "kind": "action",
+   "@cds.external": true,
+   "params": {
+    "SAP_Description": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.label": "Text of length 80"
+    },
+    "ControllingArea": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.label": "Text of length 4"
+    },
+    "SenderCostCenter": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Text of length 10"
+    },
+    "ReceiverCostCenter": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Text of length 10"
+    },
+    "InternalOrder": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.label": "Text of length 12"
+    },
+    "ActivityType": {
+     "type": "cds.String",
+     "length": 6,
+     "@sap.label": "Text of length 6"
+    },
+    "WBSelement": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Text of length 40"
+    },
+    "WorkItem": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Text of length 10"
+    },
+    "BillingControlCategory": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.label": "Text of length 8"
+    },
+    "PurchaseOrder": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Text of length 10"
+    },
+    "PurchaseOrderItem": {
+     "type": "cds.String",
+     "length": 5,
+     "@sap.label": "Text of length 5"
+    },
+    "TimesheetTaskType": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.label": "Text of length 4"
+    },
+    "TimeSheetTaskLevel": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.label": "Text of length 8"
+    },
+    "TimeSheetTaskComponent": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.label": "Text of length 8"
+    },
+    "TimeSheetNote": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Text of length 40"
+    },
+    "RecordedHours": {
+     "type": "cds.Decimal",
+     "precision": 4,
+     "scale": 2,
+     "@sap.label": "RecordedHours"
+    },
+    "RecordedQuantity": {
+     "type": "cds.Decimal",
+     "precision": 4,
+     "scale": 2,
+     "@sap.label": "RecordedQuantity"
+    },
+    "HoursUnitOfMeasure": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.label": "Text of length 3"
+    },
+    "RejectionReason": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.label": "Text of length 4"
+    },
+    "TimeSheetWrkLocCode": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.label": "Text of length 4"
+    },
+    "TimeSheetOvertimeCategory": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.label": "Text of length 4"
+    },
+    "SenderPubSecFund": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Text of length 10"
+    },
+    "SendingPubSecFunctionalArea": {
+     "type": "cds.String",
+     "length": 16,
+     "@sap.label": "Text of length 16"
+    },
+    "SenderPubSecGrant": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.label": "Text of length 20"
+    },
+    "SenderPubSecBudgetPeriod": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Text of length 10"
+    },
+    "ReceiverPubSecFund": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Text of length 10"
+    },
+    "ReceiverPubSecFuncnlArea": {
+     "type": "cds.String",
+     "length": 16,
+     "@sap.label": "Text of length 16"
+    },
+    "ReceiverPubSecGrant": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.label": "Text of length 20"
+    },
+    "ReceiverPubSecBudgetPeriod": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Text of length 10"
+    },
+    "PersonWorkAgreementExternalI": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.label": "Text of length 20"
+    },
+    "CompanyCode": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.label": "Text of length 4"
+    },
+    "TimeSheetRecord": {
+     "type": "cds.String",
+     "length": 25,
+     "@sap.label": "Text of length 25"
+    },
+    "PersonWorkAgreement": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.label": "Text of length 8"
+    },
+    "TimeSheetDate": {
+     "type": "cds.Date",
+     "@sap.label": "TimeSheetDate",
+     "@sap.display.format": "Date"
+    },
+    "TimeSheetIsReleasedOnSave": {
+     "type": "cds.Boolean",
+     "@sap.label": "TRUE"
+    },
+    "TimeSheetPredecessorRecord": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.label": "Text of length 12"
+    },
+    "TimeSheetStatus": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.label": "Text of length 2"
+    },
+    "TimeSheetIsExecutedInTestRun": {
+     "type": "cds.Boolean",
+     "@sap.label": "TRUE"
+    },
+    "TimeSheetOperation": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.label": "Text of length 1"
+    },
+    "ParentUUID": {
+     "type": "cds.String",
+     "length": 36,
+     "@sap.label": "Text of length 36"
+    }
+   },
+   "returns": {
+    "type": "YY1_DUMMYPROJECTTIME3_CDS.YY1_DUMMYPROJECTTIME3"
+   }
+  }
+ }
+}

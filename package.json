@@ -1,0 +1,36 @@
+{
+  "name": "@ordina/timesheet",
+  "version": "1.0.0",
+  "description": "Ordina Timesheet Manager",
+  "scripts": {
+    "start": "npm run start -w=approuter",
+    "dev": "npm-run-all --parallel start:cap start:approuter",
+    "start:approuter": "npm run dev -w=approuter",
+    "start:cap": "cd packages/server && npm run dev",
+    "build:cf": "npm run build:cds && npm run cleanup:ts && npm run build:ts",
+    "docs": "cd docs && docsify serve"
+  },
+  "keywords": [
+    "timesheet",
+    "efforts",
+    "booking"
+  ],
+  "author": "Scheer Group",
+  "workspaces": [
+    "packages/*"
+  ],
+  "sapux": [
+    "packages/ui"
+  ],
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "@sap/cds-hana": "^2.0.0"
+  },
+  "cds": {
+    "requires": {
+      "db": "hana"
+    }
+  }
+}

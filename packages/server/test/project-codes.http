@@ -1,0 +1,4 @@
+@url= http://localhost:4004;
+
+### Get Staffing data
+GET http://localhost:4004/timesheet/projectcodes/YY1_PROJECTSTAFFING_2?$select=EmploymentInternalID,ID,StartDate,WBSElementInternalID,WorkPackage,WorkPackageName&$count=true&$orderby=WorkPackageName%20desc,WBSElementInternalID%20desc&$filter=EmploymentInternalID%20eq%20'50004310'%20and%20StartDate%20eq%202023-11-01&$skip=0&$top=52

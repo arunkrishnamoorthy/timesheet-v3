@@ -1,0 +1,485 @@
+{
+ "meta": {
+  "creator": "cds-dk 7.3.2"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "YY1_PROJECTSTAFFING_2_CDS": {
+   "kind": "service",
+   "@cds.external": true,
+   "@m.IsDefaultEntityContainer": "true",
+   "@sap.message.scope.supported": "true",
+   "@sap.supported.formats": "atom json xlsx"
+  },
+  "YY1_PROJECTSTAFFING_2_CDS.YY1_OVERTIMECATEGORY_V": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.creatable": "false",
+   "@sap.updatable": "false",
+   "@sap.deletable": "false",
+   "@sap.searchable": "true",
+   "@sap.content.version": "1",
+   "@sap.label": "YY1_OvertimeCategory",
+   "elements": {
+    "Code": {
+     "key": true,
+     "type": "cds.String",
+     "length": 3,
+     "@sap.text": "Code_Text",
+     "@sap.label": "Overtime Category",
+     "notNull": true
+    },
+    "Code_Text": {
+     "type": "cds.String",
+     "length": 60,
+     "@sap.label": "Overtime Category (Desc.)",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "IsDisabled": {
+     "type": "cds.Boolean",
+     "@sap.label": "Is Disabled",
+     "@sap.quickinfo": "Custom Field: Code Disabled Indicator"
+    }
+   }
+  },
+  "YY1_PROJECTSTAFFING_2_CDS.YY1_ProjectStaffing_2": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.creatable": "false",
+   "@sap.updatable": "false",
+   "@sap.deletable": "false",
+   "@sap.content.version": "1",
+   "@sap.semantics": "aggregate",
+   "@sap.label": "ProjectStaffing_2",
+   "elements": {
+    "ID": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "PlanLineItemUUID": {
+     "type": "cds.UUID",
+     "@sap.aggregation.role": "dimension",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Planning Line GUID"
+    },
+    "FiscalYear": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "NonNegative",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Fiscal Year"
+    },
+    "EngagementProject": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Engmnt Project ID",
+     "@sap.quickinfo": "Engagement Project ID"
+    },
+    "FiscalPeriod": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "NonNegative",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Period"
+    },
+    "WBSElementInternalID": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "NonNegative",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "WBS Internal ID",
+     "@sap.quickinfo": "WBS Element"
+    },
+    "WorkPackage": {
+     "type": "cds.String",
+     "length": 50,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Plan Item"
+    },
+    "EngagementProjectResource": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Resource ID"
+    },
+    "Person": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Business Partner",
+     "@sap.quickinfo": "Business Partner Number"
+    },
+    "EmploymentInternalID": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "NonNegative",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Object ID"
+    },
+    "BillingControlCategory": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Billing Category",
+     "@sap.quickinfo": "Billing Control Category"
+    },
+    "DeliveryOrganization": {
+     "type": "cds.String",
+     "length": 5,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Service Organization"
+    },
+    "PlndEffortQty": {
+     "type": "cds.Decimal",
+     "precision": 15,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.required.in.filter": "false",
+     "@sap.unit": "UnitOfMeasure",
+     "@sap.label": "Total Quantity",
+     "@sap.filterable": "false"
+    },
+    "PlndRevnAmt": {
+     "type": "cds.Decimal",
+     "precision": 18,
+     "scale": 3,
+     "@sap.aggregation.role": "measure",
+     "@sap.required.in.filter": "false",
+     "@sap.unit": "Currency",
+     "@sap.label": "Amount",
+     "@sap.filterable": "false"
+    },
+    "WorkPackageName": {
+     "type": "cds.String",
+     "length": 60,
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Plan Item Desc.",
+     "@sap.quickinfo": "Plan Item Description"
+    },
+    "WorkPackageStartDate": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Start Date"
+    },
+    "WorkPackageEndDate": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "End Date"
+    },
+    "CostCenter": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Cost Center"
+    },
+    "CompanyCode": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Company Code"
+    },
+    "UnitOfMeasure": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.aggregation.role": "dimension",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Unit of Measure",
+     "@sap.semantics": "unit-of-measure"
+    },
+    "Currency": {
+     "type": "cds.String",
+     "length": 5,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Plan Currency",
+     "@sap.semantics": "currency-code"
+    },
+    "EngagementProjectResourceType": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Resource Type ID"
+    },
+    "PurchaseOrder": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Purchase Order Project assignment",
+     "@sap.quickinfo": "Purchase Order Number"
+    },
+    "PurchaseOrderItem": {
+     "type": "cds.String",
+     "length": 5,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "NonNegative",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Purchase Order Item Project assignment",
+     "@sap.quickinfo": "Item Number of Purchase Order"
+    },
+    "PurchaseOrder_1": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Purchase Order Cost center",
+     "@sap.quickinfo": "Purchase Order Number"
+    },
+    "PurchaseOrderItem_1": {
+     "type": "cds.String",
+     "length": 5,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "NonNegative",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Purchase Order Item Cost center",
+     "@sap.quickinfo": "Item Number of Purchase Order"
+    },
+    "ResourceRequestStatus": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Rsce Demand Status",
+     "@sap.quickinfo": "Assignment Status for a Resource Demand"
+    },
+    "YY1_OvertimeCategory_cpd": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.aggregation.role": "dimension",
+     "@sap.required.in.filter": "false",
+     "@sap.text": "to_YY1_OvertimeCategory_cpd/Code_Text",
+     "@sap.label": "Overtime Category",
+     "@sap.value.list": "standard"
+    },
+    "YY1_ASTRIDID2_cpd": {
+     "type": "cds.String",
+     "length": 9,
+     "@sap.aggregation.role": "dimension",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "ASTRID ID2"
+    },
+    "CustomerName": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Name of Customer"
+    },
+    "CostCenter_1": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Project cost center",
+     "@sap.quickinfo": "Organization Unit Key"
+    },
+    "EngagementProjectName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Cust.Proj. Name",
+     "@sap.quickinfo": "Customer Project Name"
+    },
+    "StartDate": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Work Agreement Start Date",
+     "@sap.quickinfo": "Start Date"
+    },
+    "EndDate": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Work Agreement End Date",
+     "@sap.quickinfo": "End Date"
+    },
+    "EngagementProjectStage": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Stage",
+     "@sap.quickinfo": "Commercial Project: Stage"
+    },
+    "PerformancePeriodStartDate_1": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Start Date",
+     "@sap.quickinfo": "Start Date for Period of Performance"
+    },
+    "PerformancePeriodEndDate_1": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "End Date",
+     "@sap.quickinfo": "End Date for Period of Performance"
+    },
+    "PurchaseOrderScheduleLine_1": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "NonNegative",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Schedule Line",
+     "@sap.quickinfo": "Delivery Schedule Line Counter"
+    },
+    "PerformancePeriodStartDate": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Start Date",
+     "@sap.quickinfo": "Start Date for Period of Performance"
+    },
+    "PerformancePeriodEndDate": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "End Date",
+     "@sap.quickinfo": "End Date for Period of Performance"
+    },
+    "PurchaseOrderScheduleLine": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "NonNegative",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Schedule Line",
+     "@sap.quickinfo": "Delivery Schedule Line Counter"
+    },
+    "CostCenterControllingArea": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Controlling Area"
+    },
+    "CostCenterValidityEndDate": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Valid To",
+     "@sap.quickinfo": "Valid To Date"
+    },
+    "PurchaseOrderCalculated": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "PurchaseOrderCalculated"
+    },
+    "PurchaseOrderItemCalculated": {
+     "type": "cds.String",
+     "length": 5,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "NonNegative",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "PurchaseOrderItemCalculated"
+    },
+    "POStartDateCalculated": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "POStartDateCalculated"
+    },
+    "POEndDateCalculated": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "POEndDateCalculated"
+    },
+    "Partner": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "End Customer",
+     "@sap.quickinfo": "Customer Number"
+    },
+    "CustomerName_1": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Name of End Customer",
+     "@sap.quickinfo": "Name of Customer"
+    },
+    "DisplayCustomerName": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.aggregation.role": "dimension",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "DisplayCustomerName"
+    },
+    "to_YY1_OvertimeCategory_cpd": {
+     "@cds.ambiguous": "missing on condition?",
+     "type": "cds.Association",
+     "target": "YY1_PROJECTSTAFFING_2_CDS.YY1_OVERTIMECATEGORY_V",
+     "on": [
+      {
+       "ref": [
+        "to_YY1_OvertimeCategory_cpd",
+        "Code"
+       ]
+      },
+      "=",
+      {
+       "ref": [
+        "YY1_OvertimeCategory_cpd"
+       ]
+      }
+     ]
+    }
+   }
+  }
+ }
+}

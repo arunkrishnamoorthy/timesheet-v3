@@ -1,0 +1,15 @@
+{
+  "xsappname": "ordinats-server-auth",
+  "scopes": ["admin"],
+  "attributes": [],
+  "role-templates": [],
+  "tenant-mode": "dedicated",
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "http://localhost:*/**",
+      "http*://*.cfapps.*.hana.ondemand.com/**",
+      "https://port5000-workspaces-ws-692d6.us10.applicationstudio.cloud.sap/login/callback",
+      "https://*.us10.applicationstudio.cloud.sap/login/callback"
+    ]
+  }
+}

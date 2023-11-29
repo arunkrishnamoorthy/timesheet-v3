@@ -1,0 +1,179 @@
+{
+    "services": {
+      "LaunchPage": {
+        "adapter": {
+          "config": {
+            "catalogs": [],
+            "groups": [
+              {
+                "id": "home",
+                "title": "Home",
+                "isPreset": true,
+                "isVisible": true,
+                "isGroupLocked": false,
+                "tiles": []
+              },
+              {
+                "id": "idTimesheet",
+                "title": "Timesheet",
+                "isPreset": true,
+                "isVisible": true,
+                "isGroupLocked": false,
+                "tiles": [
+                  {
+                    "id": "idAppManageTimesheet",
+                    "tileType": "sap.ushell.ui.tile.DynamicTile",
+                    "properties": {
+                      "title": "Timesheet",
+                      "subtitle": "manage",
+                      "targetURL": "#timesheet-manage"
+                    }
+                  },
+                  {
+                    "id": "idAppMyTimesheet",
+                    "tileType": "sap.ushell.ui.tile.StaticTile",
+                    "properties": {
+                      "title": "My Timesheet",
+                      "subtitle": "manage",
+                      "targetURL": "#timesheet-self"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "idSuperlock",
+                "title": "Superlock",
+                "isPreset": true,
+                "isVisible": true,
+                "isGroupLocked": false,
+                "tiles": [
+                  {
+                    "id": "idAppSuperlock",
+                    "tileType": "sap.ushell.ui.tile.DynamicTile",
+                    "properties": {
+                      "title": "Superlock",
+                      "targetURL": "#Superlock-manage"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "idProjectCodes",
+                "title": "Project Assignment",
+                "isPreset": true,
+                "isVisible": true,
+                "isGroupLocked": false,
+                "tiles": [
+                  {
+                    "id": "idAppProjectCodes",
+                    "tileType": "sap.ushell.ui.tile.StaticTile",
+                    "properties": {
+                      "title": "Assign Project Codes",
+                      "targetURL": "#Assign-projectcodes"
+                    }
+                  },
+                  {
+                    "id": "idAppStandInProject",
+                    "tileType": "sap.ushell.ui.tile.DynamicTile",
+                    "properties": {
+                      "title": "Stand In",
+                      "targetURL": "#StandIn-manage"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "NavTargetResolution": {
+        "config": {
+          "enableClientSideTargetResolution": true
+        }
+      },
+      "ClientSideTargetResolution": {
+        "adapter": {
+          "config": {
+            "inbounds": {
+              "AssingProjectsCodes": {
+                "semanticObject": "Assign",
+                "action": "projectcodes",
+                "title": "Assign Project Codes",
+                "signature": {
+                  "parameters": {
+                  },
+                  "additionalParameters": "ignored"
+                },
+                "resolutionResult": {
+                  "applicationType": "SAPUI5",
+                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.assignprojectcodes",
+                  "url": "assignprojectcodes/webapp"
+                }
+              },
+              "StandInProject": {
+                "semanticObject": "StandIn",
+                "action": "manage",
+                "title": "Stand-In",
+                "signature": {
+                  "parameters": {
+                  },
+                  "additionalParameters": "ignored"
+                },
+                "resolutionResult": {
+                  "applicationType": "SAPUI5",
+                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.assignprojectcodes",
+                  "url": "standinprojects/webapp"
+                }
+              },
+              "TimesheetManage": {
+                "semanticObject": "timesheet",
+                "action": "manage",
+                "title": "Manage Timesheet",
+                "signature": {
+                  "parameters": {
+                  },
+                  "additionalParameters": "ignored"
+                },
+                "resolutionResult": {
+                  "applicationType": "SAPUI5",
+                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.assignprojectcodes",
+                  "url": "managetimesheet/webapp"
+                }
+              },
+              "TimesheetSelf": {
+                "semanticObject": "timesheet",
+                "action": "self",
+                "title": "My Timesheet",
+                "signature": {
+                  "parameters": {
+                  },
+                  "additionalParameters": "ignored"
+                },
+                "resolutionResult": {
+                  "applicationType": "SAPUI5",
+                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.assignprojectcodes",
+                  "url": "mytimesheet/webapp"
+                }
+              },
+              "SuperlockManage": {
+                "semanticObject": "Superlock",
+                "action": "manage",
+                "title": "Superlock",
+                "signature": {
+                  "parameters": {
+                  },
+                  "additionalParameters": "ignored"
+                },
+                "resolutionResult": {
+                  "applicationType": "SAPUI5",
+                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.assignprojectcodes",
+                  "url": "superlock/webapp"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
