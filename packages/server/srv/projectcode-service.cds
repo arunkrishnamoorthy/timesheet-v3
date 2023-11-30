@@ -11,10 +11,12 @@ service ProjectCodes @(path: '/timesheet/projectcodes') {
     entity ProjectCodes          as projection on projectcodes.PROJECT_CODE actions {
         @sap.applicable.path: 'WBS_ELEMENT'
         action CopyAssignment(
-
+        PROJECT_ID: String @UI.Hidden @UI.ParameterDefaultValue: in.ID,
+        TIME_ID: String @UI.Hidden @UI.ParameterDefaultValue: in.TIME_UUID,
         PERSON_NUMBER : String  @UI.Hidden  @UI.ParameterDefaultValue:in.PERSON_NUMBER,
         CUSTOMER : String  @UI.Hidden  @UI.ParameterDefaultValue:in.CUSTOMER,
-        START_DATE : Date  @UI.Hidden  @UI.ParameterDefaultValue:in.FIRST_DAY,
+        FIRST_DATE : Date  @UI.Hidden  @UI.ParameterDefaultValue:in.FIRST_DAY,
+        
 
         @title:'WBS Element'
         @Common:{ValueList: {
@@ -25,6 +27,16 @@ service ProjectCodes @(path: '/timesheet/projectcodes') {
                                           $Type            : 'Common.ValueListParameterIn',
                                           LocalDataProperty: PERSON_NUMBER,
                                           ValueListProperty: 'EmploymentInternalID',
+                                      },
+                                      {
+                                          $Type            : 'Common.ValueListParameterIn',
+                                          LocalDataProperty: FIRST_DATE,
+                                          ValueListProperty: 'StartDate',
+                                      },
+                                      {
+                                          $Type            : 'Common.ValueListParameterIn',
+                                          LocalDataProperty: FIRST_DATE,
+                                          ValueListProperty: 'EndDate',
                                       },
                                       {
                                           $Type            : 'Common.ValueListParameterInOut',

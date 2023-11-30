@@ -2,3 +2,13 @@
 
 ### Get Staffing data
 GET http://localhost:4004/timesheet/projectcodes/YY1_PROJECTSTAFFING_2?$select=EmploymentInternalID,ID,StartDate,WBSElementInternalID,WorkPackage,WorkPackageName&$count=true&$orderby=WorkPackageName%20desc,WBSElementInternalID%20desc&$filter=EmploymentInternalID%20eq%20'50004310'%20and%20StartDate%20eq%202023-11-01&$skip=0&$top=52
+
+### Get Staffing Data
+GET http://localhost:4004/timesheet/projectcodes/YY1_PROJECTSTAFFING_2?$orderby=WorkPackageName,WBSElementInternalID&$select=ID,WBSElementInternalID,WorkPackage,WorkPackageName&$filter=EmploymentInternalID%20eq%20'50004310'%20and%20StartDate%20le%202023-11-01%20and%20EndDate%20ge%202023-11-01&$skip=0&$top=20
+
+### Copy Assignment
+
+POST http://localhost:4004/timesheet/projectcodes/ProjectCodes(9c1b4893-62d4-446d-83cc-6929b75c91a1)/ProjectCodes.CopyAssignment
+Content-Type: application/json
+
+{"PERSON_NUMBER":"50004310","CUSTOMER":"6010","FIRST_DATE":"2023-11-01","WBS_ELEMENT":"C0001606.1.4"}

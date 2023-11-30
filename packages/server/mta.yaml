@@ -38,30 +38,30 @@ modules:
     disk-quota: 256M
     keep-existing-routes: true
     memory: 256M
-# - name: ordinats-app-content
-#   type: com.sap.application.content
-#   path: .
-#   requires:
-#   - name: ordinats-repo-host
-#     parameters:
-#       content-target: true
-#   build-parameters:
-#     build-result: resources
-#     requires:
-#     - artifacts:
-#       - comordinatsuiassignprojectcodes.zip
-#       name: comordinatsuiassignprojectcodes
-#       target-path: resources/
-# - name: comordinatsuiassignprojectcodes
-#   type: html5
-#   path: ../ui/assignprojectcodes/
-#   build-parameters:
-#     build-result: dist
-#     builder: custom
-#     commands:
-#     - npm install
-#     - npm run build:cf
-#     supported-platforms: []
+- name: ordinats-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: ordinats-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - comordinatsuiassignprojectcodes.zip
+      name: comordinatsuiassignprojectcodes
+      target-path: resources/
+- name: comordinatsuiassignprojectcodes
+  type: html5
+  path: ../ui/assignprojectcodes/
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
 resources:
 - name: ordinats-server-auth
   type: org.cloudfoundry.managed-service

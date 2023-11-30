@@ -217,7 +217,40 @@ module.exports = async (srv) => {
     });
 
     srv.on("CopyAssignment", async (req) => {
-        req.error(400);
+        // req.error(400);
+        const { 
+            PROJECT_ID:DummyProjectId, 
+            TIME_ID:DummyProjectTimeId, 
+            PERSON_NUMBER:PersonnelNumber, 
+            WBS_ELEMENT:WBSCode } = req.data;
+        const timesheet = await cds.connect.to("API_MANAGE_WORKFORCE_TIMESHEET");
+        
+        //...blah,..blah..blah...all the existing logic goes here...
+
+        req.notify({
+            message: `Stand-In project assignment are copied to WBS element.`,
+            numericSeverity: 1,
+            status: 200,
+        });
+    });
+
+    srv.before("READ","YY1_PROJECTSTAFFING_2", (req) => {
+        // Patch update: TODO, the value list annotation does not provide a direct approach to apply a filter other 
+        // then equal to. For the date we require a condition greater than and less than. with Value list annotation
+        // not expecting to handle that,the expression is overwritten in the CAP to modify the 
+        let where = req.query.SELECT.where;
+        for(index in where) {
+            let expr = where[index];
+            if(expr && expr.ref){
+                if(expr.ref.indexOf('StartDate') >= 0 ){
+                    where[parseInt(index)+1] = '<='
+                }
+                if(expr.ref.indexOf('EndDate') >= 0 ){
+                    where[parseInt(index)+1] = '>='
+                }
+            }
+        }
+        req.query.SELECT.where = where;
     });
 
     srv.on("READ", "YY1_PROJECTSTAFFING_2", (req) => {
