@@ -2,21 +2,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "cds serve",
-      "request": "launch",
-      "type": "node",
-      "cwd": "${workspaceFolder}/packages/server",
-      "runtimeExecutable": "cds",
-      "args": [
-        "watch",
-        "--with-mocks",
-        "--in-memory?"
-      ],
-      "skipFiles": [
-        "<node_internals>/**"
-      ]
-    },
-    {
       "command": "cds watch --profile hybrid",
       "name": "Debug: Server",
       "request": "launch",
@@ -25,9 +10,10 @@
     },
     {
       "command": "npm run dev",
+      "name": "Debug: Timesheet Application",
       "type": "node-terminal",
       "request": "launch",
-      "cwd": "${workspaceFolder}//ordina-timesheet"
+      "cwd": "${workspaceFolder}/"
     }
   ]
 }

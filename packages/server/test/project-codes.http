@@ -12,3 +12,6 @@ POST http://localhost:4004/timesheet/projectcodes/ProjectCodes(9c1b4893-62d4-446
 Content-Type: application/json
 
 {"PERSON_NUMBER":"50004310","CUSTOMER":"6010","FIRST_DATE":"2023-11-01","WBS_ELEMENT":"C0001606.1.4"}
+
+### Download Excel 
+GET http://localhost:4004/timesheet/projectcodes/exportSuperlock()

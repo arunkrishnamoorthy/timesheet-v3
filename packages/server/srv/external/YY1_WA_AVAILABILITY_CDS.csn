@@ -1,0 +1,170 @@
+{
+ "meta": {
+  "creator": "cds-dk 7.4.0"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "YY1_WA_AVAILABILITY_CDS": {
+   "kind": "service",
+   "@cds.external": true,
+   "@m.IsDefaultEntityContainer": "true",
+   "@sap.message.scope.supported": "true",
+   "@sap.supported.formats": "atom json xlsx"
+  },
+  "YY1_WA_AVAILABILITY_CDS.YY1_WA_Availability": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.creatable": "false",
+   "@sap.updatable": "false",
+   "@sap.deletable": "false",
+   "@sap.content.version": "1",
+   "@sap.semantics": "aggregate",
+   "@sap.label": "WorkAgreementAvailability",
+   "elements": {
+    "ID": {
+     "key": true,
+     "type": "cds.LargeString",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "Person": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.text": "PersonFullName",
+     "@sap.label": "Business Partner",
+     "@sap.quickinfo": "Business Partner Number"
+    },
+    "PersonFullName": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Full Name"
+    },
+    "PersonWorkAgreement_1": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "NonNegative",
+     "@sap.required.in.filter": "false",
+     "@sap.text": "PersonFullName",
+     "@sap.label": "Personnel Number"
+    },
+    "StartDate": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Start Date"
+    },
+    "EndDate": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "End Date"
+    },
+    "CompanyCode": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Company Code"
+    },
+    "CostCenter": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Cost Center"
+    },
+    "CompanyCodeName": {
+     "type": "cds.String",
+     "length": 25,
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Company Name",
+     "@sap.quickinfo": "Name of Company Code or Company"
+    },
+    "BusinessPartnerRole": {
+     "type": "cds.String",
+     "length": 6,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "BP Role"
+    },
+    "PersonExternalID": {
+     "type": "cds.String",
+     "length": 60,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "ID Number",
+     "@sap.quickinfo": "Identification Number"
+    },
+    "BusinessPartner": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Business Partner",
+     "@sap.quickinfo": "Business Partner Number"
+    },
+    "PersonWorkAgreement": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "NonNegative",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Personnel number",
+     "@sap.quickinfo": "Personnel Number"
+    },
+    "CalendarDate": {
+     "type": "cds.Date",
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "Date",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Valid On",
+     "@sap.quickinfo": "Validity Date"
+    },
+    "AvailabilityInHours": {
+     "type": "cds.Decimal",
+     "precision": 8,
+     "scale": 2,
+     "@sap.aggregation.role": "measure",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "AvailabilityInHours",
+     "@sap.filterable": "false"
+    },
+    "YearMonth": {
+     "type": "cds.String",
+     "length": 6,
+     "@sap.aggregation.role": "dimension",
+     "@sap.display.format": "NonNegative",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Year Month"
+    },
+    "CostCenterName": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Cost Center Name"
+    },
+    "BusinessPartnerRoleShortName": {
+     "type": "cds.String",
+     "length": 25,
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Role Description",
+     "@sap.quickinfo": "BP Role Title"
+    }
+   }
+  }
+ }
+}

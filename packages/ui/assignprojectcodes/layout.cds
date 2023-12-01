@@ -6,6 +6,18 @@ annotate service.ProjectCodes with @UI : {
         PERSON_NUMBER,
         PROJECT_NAME
     ],
+     HeaderInfo : {
+        TypeName : 'Assign Project Codes',
+        TypeNamePlural : 'Assign Project Codes',
+        Title : {
+            $Type : 'UI.DataField',
+            Value : PROJECT_NAME
+        },
+        Description : {
+            $Type : 'UI.DataField',
+            Value : PROJECT_DESC
+        }
+    },
     LineItem  : [
         {
             $Type : 'UI.DataFieldForAction',

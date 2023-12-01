@@ -82,4 +82,5 @@ service ProjectCodes @(path: '/timesheet/projectcodes') {
     @cds.persistence.skip: true
     entity YY1_PROJECTSTAFFING_2 as projection on Staffing.YY1_ProjectStaffing_2;
 
+    function exportSuperlock() returns String;
 }

@@ -1,0 +1,1 @@
+using s4cloud as service from '../../server/srv/s4-service';

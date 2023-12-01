@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="s4cloud" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="YY1_DUMMYPROJECT" EntityType="s4cloud.YY1_DUMMYPROJECT"/>
+                <EntitySet Name="YY1_DUMMYPROJECTTIME3" EntityType="s4cloud.YY1_DUMMYPROJECTTIME3"/>
+            </EntityContainer>
+            <EntityType Name="YY1_DUMMYPROJECT">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="PersonnelNumber" Type="Edm.String" MaxLength="8"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ProjectName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="PersonFullName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="ProjectDescription" Type="Edm.String" MaxLength="80"/>
+                <Property Name="StandByAllowed" Type="Edm.Boolean"/>
+                <Property Name="DummyProjectStatus" Type="Edm.String" MaxLength="20"/>
+                <Property Name="SAP_CreatedDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="SAP_CreatedByUser" Type="Edm.String" MaxLength="12"/>
+                <Property Name="SAP_CreatedByUser_Text" Type="Edm.String" MaxLength="80"/>
+                <Property Name="SAP_LastChangedDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="SAP_LastChangedByUser" Type="Edm.String" MaxLength="12"/>
+                <Property Name="SAP_LastChangedByUser_Text" Type="Edm.String" MaxLength="80"/>
+            </EntityType>
+            <EntityType Name="YY1_DUMMYPROJECTTIME3">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="SAP_Description" Type="Edm.String" MaxLength="80"/>
+                <Property Name="SAP_CreatedDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="SAP_CreatedByUser" Type="Edm.String" MaxLength="12"/>
+                <Property Name="SAP_CreatedByUser_Text" Type="Edm.String" MaxLength="80"/>
+                <Property Name="SAP_LastChangedDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="SAP_LastChangedByUser" Type="Edm.String" MaxLength="12"/>
+                <Property Name="SAP_LastChangedByUser_Text" Type="Edm.String" MaxLength="80"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4"/>
+                <Property Name="SenderCostCenter" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ReceiverCostCenter" Type="Edm.String" MaxLength="10"/>
+                <Property Name="InternalOrder" Type="Edm.String" MaxLength="12"/>
+                <Property Name="ActivityType" Type="Edm.String" MaxLength="6"/>
+                <Property Name="WBSelement" Type="Edm.String" MaxLength="40"/>
+                <Property Name="WorkItem" Type="Edm.String" MaxLength="10"/>
+                <Property Name="BillingControlCategory" Type="Edm.String" MaxLength="8"/>
+                <Property Name="PurchaseOrder" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PurchaseOrderItem" Type="Edm.String" MaxLength="5"/>
+                <Property Name="TimesheetTaskType" Type="Edm.String" MaxLength="4"/>
+                <Property Name="TimeSheetTaskLevel" Type="Edm.String" MaxLength="8"/>
+                <Property Name="TimeSheetTaskComponent" Type="Edm.String" MaxLength="8"/>
+                <Property Name="TimeSheetNote" Type="Edm.String" MaxLength="40"/>
+                <Property Name="RecordedHours" Type="Edm.Decimal" Scale="2" Precision="4"/>
+                <Property Name="RecordedQuantity" Type="Edm.Decimal" Scale="2" Precision="4"/>
+                <Property Name="HoursUnitOfMeasure" Type="Edm.String" MaxLength="3"/>
+                <Property Name="RejectionReason" Type="Edm.String" MaxLength="4"/>
+                <Property Name="TimeSheetWrkLocCode" Type="Edm.String" MaxLength="4"/>
+                <Property Name="TimeSheetOvertimeCategory" Type="Edm.String" MaxLength="4"/>
+                <Property Name="SenderPubSecFund" Type="Edm.String" MaxLength="10"/>
+                <Property Name="SendingPubSecFunctionalArea" Type="Edm.String" MaxLength="16"/>
+                <Property Name="SenderPubSecGrant" Type="Edm.String" MaxLength="20"/>
+                <Property Name="SenderPubSecBudgetPeriod" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ReceiverPubSecFund" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ReceiverPubSecFuncnlArea" Type="Edm.String" MaxLength="16"/>
+                <Property Name="ReceiverPubSecGrant" Type="Edm.String" MaxLength="20"/>
+                <Property Name="ReceiverPubSecBudgetPeriod" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PersonWorkAgreementExternalI" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4"/>
+                <Property Name="TimeSheetRecord" Type="Edm.String" MaxLength="25"/>
+                <Property Name="PersonWorkAgreement" Type="Edm.String" MaxLength="8"/>
+                <Property Name="TimeSheetDate" Type="Edm.Date"/>
+                <Property Name="TimeSheetIsReleasedOnSave" Type="Edm.Boolean"/>
+                <Property Name="TimeSheetPredecessorRecord" Type="Edm.String" MaxLength="12"/>
+                <Property Name="TimeSheetStatus" Type="Edm.String" MaxLength="2"/>
+                <Property Name="TimeSheetIsExecutedInTestRun" Type="Edm.Boolean"/>
+                <Property Name="TimeSheetOperation" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ParentUUID" Type="Edm.String" MaxLength="36"/>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

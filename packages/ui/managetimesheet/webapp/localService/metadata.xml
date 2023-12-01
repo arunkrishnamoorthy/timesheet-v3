@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="superlockService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="EmployeeData" EntityType="superlockService.EmployeeData"/>
+            </EntityContainer>
+            <EntityType Name="EmployeeData">
+                <Key>
+                    <PropertyRef Name="PersonnelNumber"/>
+                </Key>
+                <Property Name="PersonnelNumber" Type="Edm.String" Nullable="false"/>
+                <Property Name="PersonFullName" Type="Edm.String"/>
+                <Property Name="PersonExternalID" Type="Edm.String"/>
+                <Property Name="CompanyCode" Type="Edm.String"/>
+                <Property Name="BusinessPartnerRole" Type="Edm.String"/>
+                <Property Name="BusinessPartnerRoleShortName" Type="Edm.String"/>
+                <Property Name="AvailabilityInHours" Type="Edm.String"/>
+                <Property Name="CostCenter" Type="Edm.String"/>
+                <Property Name="CostCenterName" Type="Edm.String"/>
+                <Property Name="EndDate" Type="Edm.Date"/>
+                <Property Name="Country" Type="Edm.String"/>
+                <Property Name="LockStatus" Type="Edm.String"/>
+                <Property Name="Reason" Type="Edm.String"/>
+                <Property Name="Unit" Type="Edm.String"/>
+                <Property Name="EmployeeType" Type="Edm.String"/>
+                <Property Name="HoursExternal" Type="Edm.String"/>
+                <Property Name="HoursInternal" Type="Edm.String"/>
+                <Property Name="HoursDecimal" Type="Edm.String"/>
+                <Property Name="HoursMinutes" Type="Edm.String"/>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

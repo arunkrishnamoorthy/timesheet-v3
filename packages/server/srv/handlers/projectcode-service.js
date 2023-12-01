@@ -1,4 +1,5 @@
 const cds = require('@sap/cds');
+const ExcelJS = require('exceljs');
 
 module.exports = async (srv) => {
 
@@ -156,7 +157,8 @@ module.exports = async (srv) => {
                     "SAP_UUID",
                     "PersonWorkAgreement",
                     "TimeSheetDate",
-                    "WBSelement"
+                    "WBSelement",
+                    "ParentUUID"
                 ).orderBy(
                     "TimeSheetDate"
                 )
@@ -170,7 +172,7 @@ module.exports = async (srv) => {
             data.TIME_UUID = oEmployeeFirstRecord?.SAP_UUID;
             return data;
         });
-        // dummyprojectdata = dummyprojectdata.filter((data) => data.FIRST_DAY ? true : false);
+        dummyprojectdata = dummyprojectdata.filter((data) => data.FIRST_DAY ? true : false);
         let result = dummyprojectdata.map((dummyproject) => {
             let data = {};
             switch (entity) {
@@ -218,13 +220,13 @@ module.exports = async (srv) => {
 
     srv.on("CopyAssignment", async (req) => {
         // req.error(400);
-        const { 
-            PROJECT_ID:DummyProjectId, 
-            TIME_ID:DummyProjectTimeId, 
-            PERSON_NUMBER:PersonnelNumber, 
-            WBS_ELEMENT:WBSCode } = req.data;
+        const {
+            PROJECT_ID: DummyProjectId,
+            TIME_ID: DummyProjectTimeId,
+            PERSON_NUMBER: PersonnelNumber,
+            WBS_ELEMENT: WBSCode } = req.data;
         const timesheet = await cds.connect.to("API_MANAGE_WORKFORCE_TIMESHEET");
-        
+
         //...blah,..blah..blah...all the existing logic goes here...
 
         req.notify({
@@ -234,19 +236,19 @@ module.exports = async (srv) => {
         });
     });
 
-    srv.before("READ","YY1_PROJECTSTAFFING_2", (req) => {
+    srv.before("READ", "YY1_PROJECTSTAFFING_2", (req) => {
         // Patch update: TODO, the value list annotation does not provide a direct approach to apply a filter other 
         // then equal to. For the date we require a condition greater than and less than. with Value list annotation
         // not expecting to handle that,the expression is overwritten in the CAP to modify the 
         let where = req.query.SELECT.where;
-        for(index in where) {
+        for (index in where) {
             let expr = where[index];
-            if(expr && expr.ref){
-                if(expr.ref.indexOf('StartDate') >= 0 ){
-                    where[parseInt(index)+1] = '<='
+            if (expr && expr.ref) {
+                if (expr.ref.indexOf('StartDate') >= 0) {
+                    where[parseInt(index) + 1] = '<='
                 }
-                if(expr.ref.indexOf('EndDate') >= 0 ){
-                    where[parseInt(index)+1] = '>='
+                if (expr.ref.indexOf('EndDate') >= 0) {
+                    where[parseInt(index) + 1] = '>='
                 }
             }
         }
@@ -271,5 +273,36 @@ module.exports = async (srv) => {
     srv.on("READ", "YY1_DUMMYPROJECTTIME3", (req) => {
         const projecttimedata = projecttime.tx(req).run(req.query);
         return projecttimedata;
+    });
+
+    /**
+     * Download Excel data
+     */
+    srv.on("exportSuperlock", async (req) => {
+        let res = req._.req.res;
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet('Sheet 1');
+
+        // Add data to the worksheet
+        worksheet.columns = [
+            { header: 'Column 1', key: 'col1', width: 10 },
+            { header: 'Column 2', key: 'col2', width: 10 },
+        ];
+
+        worksheet.addRow({ col1: 'Value 1', col2: 'Value 2' });
+
+        // Set response headers for Excel file
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        res.setHeader('Content-Disposition', 'attachment; filename=example.xlsx');
+
+        // Pipe the Excel file directly to the response
+        workbook.xlsx.write(res)
+            .then(() => {
+                console.log('Excel file sent successfully.');
+            })
+            .catch((error) => {
+                console.error('Error sending Excel file:', error);
+                res.status(500).send('Internal Server Error');
+            });
     });
 };

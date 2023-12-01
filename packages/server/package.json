@@ -15,6 +15,7 @@
         "@sap/cloud-sdk-core": "^1.17.2",
         "@sap/xsenv": "^4.2.0",
         "@sap/xssec": "^3.6.0",
+        "exceljs": "^4.4.0",
         "express": "^4",
         "passport": "^0"
     },
@@ -27,11 +28,13 @@
     },
     "scripts": {
         "start": "cds-serve",
-        "dev": "cds watch --profile hybrid",
+        "dev": "cds watch --in-memory --profile hybrid",
         "watch-assignprojectcodes": "cds watch --open assignprojectcodes/webapp/index.html?sap-ui-xx-viewCache=false",
         "undeploy": "cf undeploy ordinats --delete-services --delete-service-keys --delete-service-brokers",
         "build": "rimraf resources mta_archives && mbt build --mtar archive",
-        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "watch-managestandinui": "cds watch --open managestandinui/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-managetimesheet": "cds watch --open managetimesheet/webapp/index.html?sap-ui-xx-viewCache=false"
     },
     "cds": {
         "requires": {
@@ -72,16 +75,16 @@
                 },
                 "[production]": {
                     "credentials": {
-                      "destination": "S4HC_BTP_DEST",
-                      "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECT_CDS"
+                        "destination": "S4HC_BTP_DEST",
+                        "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECT_CDS"
                     }
-                  },
-                  "[development]": {
+                },
+                "[development]": {
                     "credentials": {
-                      "destination": "S4HC_BTP_DEST",
-                      "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECT_CDS"
+                        "destination": "S4HC_BTP_DEST",
+                        "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECT_CDS"
                     }
-                  },
+                },
                 "[hybrid]": {
                     "credentials": {
                         "destination": "S4HC_BTP_DEST",
@@ -122,10 +125,23 @@
                 },
                 "csrf": true,
                 "csrfInBatch": true
+            },
+            "YY1_WA_AVAILABILITY_CDS": {
+                "kind": "odata-v2",
+                "model": "srv/external/YY1_WA_AVAILABILITY_CDS",
+                "credentials": {
+                    "destination": "S4HC_BTP_DEST",
+                    "path": "/sap/opu/odata/sap/YY1_PROJECTSTAFFING_2_CDS"
+                },
+                "[hybrid]": {
+                    "credentials": {
+                        "destination": "S4HC_BTP_DEST",
+                        "path": "/sap/opu/odata/sap/YY1_PROJECTSTAFFING_2_CDS"
+                    }
+                },
+                "csrf": true,
+                "csrfInBatch": true
             }
         }
-    },
-    "sapux": [
-        "app/assignprojectcodes"
-    ]
+    }
 }
