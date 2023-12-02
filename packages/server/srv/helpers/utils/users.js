@@ -9,16 +9,6 @@ class User {
      */
     constructor() {
         this.user;
-        // this.setUserInfo(email);
-    }
-
-    /**
-     * Set the user information
-     * @param {String} email - CDS Request Object 
-     */
-    async setUserInfo(email) {
-       let userDetail = await cds.connect.to("YY1_CurrentUserAPI2_CDS");
-       this.user  = await userDetail.run(SELECT("YY1_CurrentUserAPI2").where({ UserName: email }));
     }
 
     /**

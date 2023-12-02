@@ -137,7 +137,7 @@
                 },
                 "resolutionResult": {
                   "applicationType": "SAPUI5",
-                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.assignprojectcodes",
+                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.managetimesheet",
                   "url": "managetimesheet/webapp"
                 }
               },

@@ -12,3 +12,6 @@ using from '../../ui/managestandinui/label';
 
 // Manage Timesheet 
 using from '../../ui/managetimesheet/annotations';
+using from '../../ui/managetimesheet/layout';
+using from '../../ui/managetimesheet/capabilities';
+using from '../../ui/managetimesheet/variants';

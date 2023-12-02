@@ -112,6 +112,23 @@
                     "route": "EmployeeDataObjectPage"
                   }
                 }
+              },
+              "initialLoad": true,
+              "views": {
+                "paths" : [
+                  {
+                    "key": "belgium",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Belgium"
+                  },
+                  {
+                    "key": "netherland",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Netherlands"
+                  },
+                  {
+                    "key": "luxemberg",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Luxemberg"
+                  }
+                ]
               }
             }
           }

@@ -1,5 +1,5 @@
 const cds = require('@sap/cds');
-const UserFactory  = require('../helpers/users');
+const UserFactory  = require('../helpers/utils/users');
 
 module.exports = async (srv) => {
 
