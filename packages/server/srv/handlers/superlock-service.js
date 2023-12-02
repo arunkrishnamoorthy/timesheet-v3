@@ -21,10 +21,33 @@ module.exports = async (srv) => {
         let top = req._queryOptions?.$top || 100;
         let skip = req._queryOptions?.$skip || 0;
         let availabilityAPI = new Yy1_Wa_AvailabilityApi();
-        let filters = availabilityAPI.schema.COMPANY_CODE.equals('9034');
-        let count = await availabilityAPI.requestBuilder().getAll().filter(filters).count().execute(destination);
-        const resultPromise = await availabilityAPI.requestBuilder().getAll().skip(skip).top(top).execute(destination);
-        let result = resultPromise.map((result) => {
+        let periodFilter = [];
+        periodFilter.push(availabilityAPI.schema.YEAR_MONTH.equals('202312'));
+        let companyFilters = [];
+        let aCompanyCodes = companyCode.getCompanyCodeByCountry('NL');
+        aCompanyCodes.forEach((value) => {
+            companyFilters.push(availabilityAPI.schema.COMPANY_CODE.equals(value));
+        });
+        let count = await availabilityAPI.requestBuilder()
+                                         .getAll()
+                                         .filter(and
+                                            (
+                                            or(...periodFilter),    
+                                            or(...companyFilters)
+                                          ))
+                                         .count()
+                                         .execute(destination);
+        const availabilityData = await availabilityAPI.requestBuilder()
+                                                   .getAll()
+                                                   .filter(and
+                                                    (
+                                                    or(...periodFilter),    
+                                                    or(...companyFilters)
+                                                    ))
+                                                   .skip(skip)
+                                                   .top(top)
+                                                   .execute(destination);
+        let result = availabilityData.map((result) => {
             return {
                 PersonnelNumber: result.personWorkAgreement1,
                 PersonFullName: result.personFullName,

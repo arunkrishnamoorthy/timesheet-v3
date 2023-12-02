@@ -1,6 +1,6 @@
 const { CompanyCodeApi } = require('../../lib/API_COMPANYCODE_SRV/CompanyCodeApi');
 const { or, and } = require('@sap-cloud-sdk/odata-v2');
-
+const destination = { destinationName: 'S4HC_BTP_DEST' };
 class CompanyCode {
 
     constructor() {
@@ -11,19 +11,19 @@ class CompanyCode {
     async initializeCompanyCode() {
         let api = new CompanyCodeApi();
         let filters = [];
-        filters.push(CompanyCodeApi.schema.COUNTRY.equals('NL'));
-        filters.push(CompanyCodeApi.schema.COUNTRY.equals('BE'));
-        filters.push(CompanyCodeApi.schema.COUNTRY.equals('LU'));
-        let companyCodeResponse = await availabilityAPI.requestBuilder()
+        filters.push(api.schema.COUNTRY.equals('NL'));
+        filters.push(api.schema.COUNTRY.equals('BE'));
+        filters.push(api.schema.COUNTRY.equals('LU'));
+        let companyCodeResponse = await api.requestBuilder()
                                         .getAll()
-                                        .select(CompanyCodeApi.schema.COUNTRY, CompanyCodeApi.schema.COMPANY_CODE)
-                                        .filter(...filters).execute(destination);
+                                        .select(api.schema.COUNTRY, api.schema.COMPANY_CODE)
+                                        .filter(or(...filters)).execute(destination);
         companyCodeResponse.forEach((row) => {
-            if(!this.mCompanyCodes[row.COUNTRY]){
-                this.mCompanyCodes[row.COUNTRY] = [];
+            if(!this.mCompanyCodes[row.country]){
+                this.mCompanyCodes[row.country] = [];
             }
-            if(this.mCompanyCodes[row.COUNTRY].includes(row.COMPANY_CODE) < 0){
-                this.mCompanyCodes[row.COUNTRY].push(row.COMPANY_CODE);
+            if(this.mCompanyCodes[row.country].indexOf(row.companyCode) < 0){
+                this.mCompanyCodes[row.country].push(row.companyCode);
             }
         });
     }
@@ -40,7 +40,7 @@ class CompanyCodeFactory {
 
     static getInstance() {
         if(!CompanyCodeFactory.instance) {
-            CompanyCodeFactory = new CompanyCode();
+            CompanyCodeFactory.instance = new CompanyCode();
         } 
         return CompanyCodeFactory.instance;
     }

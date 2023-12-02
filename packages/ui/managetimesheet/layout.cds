@@ -5,7 +5,8 @@ annotate service.EmployeeData with @(
         PersonnelNumber,
         EmployeeType,
         Unit,
-        LockStatus
+        LockStatus,
+        EndDate 
     ]
 );
 
@@ -179,3 +180,5 @@ annotate service.EmployeeData with @(
         },
     ]
 );
+
+
