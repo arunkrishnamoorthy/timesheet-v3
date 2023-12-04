@@ -129,6 +129,22 @@
                     "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Luxemberg"
                   }
                 ]
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                  "filterFields": {
+                    "EndDate": {
+                      "label": "End Date",
+                      "property": "EndDate",
+                      "required": false,
+                      "template": "com.ordinats.ui.managetimesheet.ext.DatePeriod.DatePeriod",
+                      "position": {
+                        "placement": "Before",
+                        "anchor": "PersonnelNumber"
+                      }
+                    }
+                  }
+                }
               }
             }
           }

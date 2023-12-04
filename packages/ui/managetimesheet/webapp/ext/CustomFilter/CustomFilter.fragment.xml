@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+        <ComboBox
+            id="ControlID"
+            core:require="{handler: 'com/ordinats/ui/managetimesheet/ext/CustomFilter/CustomFilter'}"
+            selectedKey="{path: 'filterValues>', type: 'sap.fe.macros.filter.type.Value', formatOptions: { operator: 'com.ordinats.ui.managetimesheet.ext.CustomFilter.CustomFilter.FunctionName' }}"
+        >
+            <items>
+                <core:Item key="0" text="Item1"/>
+                <core:Item key="1" text="Item2"/>
+                <core:Item key="2" text="Item3"/>
+            </items>
+        </ComboBox>
+        <!-- <DatePicker
+			id="idEndDate"
+            enabled ="true"
+            value = "{ path: 'filterValues>', type: 'sap.ui.model.type.Date', formatOptions: {
+							pattern: 'MMM-yyyy'
+						}}"
+			change="onChangeDate"
+			/> -->
+</core:FragmentDefinition>

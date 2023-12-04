@@ -44,14 +44,27 @@ The cap server can be individually executed using the using the start command
 cds watch --profile hybrid
 ```
 
-Configure the following in the launch.json of the vscode to debug the CAP server individually. 
+Configure the following in the launch.json of the vscode to debug the CAP server individually and also the cap server from the application router. 
 
 ```json
 {
-    "command": "cds watch --profile hybrid",
-    "name": "Debug: Server",
-    "request": "launch",
-    "type": "node-terminal",
-    "cwd": "${workspaceFolder}/packages/server"
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "command": "cds watch --profile hybrid",
+      "name": "Debug: Server",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/packages/server"
+    },
+    {
+      "command": "npm run dev",
+      "name": "Debug: Timesheet Application",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/"
+    }
+  ]
 }
 ```
+

@@ -1,0 +1,13 @@
+{
+    "name": "@ordina/timesheet",
+    "version": "1.0.0",
+    "description": "Ordina Timesheet Manager-UI Module",
+    "devDependencies": {
+      "@sap/ux-specification": "^1.120.0",
+      "rimraf": "^3.0.2"
+    },
+    "sapux": [
+      "ui/managetimesheet"
+    ]
+  }
+  
