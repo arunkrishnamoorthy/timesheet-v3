@@ -21,6 +21,7 @@ service ProjectCodes @(path: '/timesheet/projectcodes') {
         @title:'WBS Element'
         @Common:{ValueList: {
             $Type                       : 'Common.ValueListType',
+            SelectionVariantQualifier : 'StartDate',
             CollectionPath              : 'YY1_PROJECTSTAFFING_2',          
                                   Parameters                  : [
                                       {
@@ -29,15 +30,19 @@ service ProjectCodes @(path: '/timesheet/projectcodes') {
                                           ValueListProperty: 'EmploymentInternalID',
                                       },
                                       {
-                                          $Type            : 'Common.ValueListParameterIn',
-                                          LocalDataProperty: FIRST_DATE,
-                                          ValueListProperty: 'StartDate',
+                                          $Type : 'Common.ValueListParameterFilterOnly',
+                                          ValueListProperty : 'StartDate',
                                       },
-                                      {
-                                          $Type            : 'Common.ValueListParameterIn',
-                                          LocalDataProperty: FIRST_DATE,
-                                          ValueListProperty: 'EndDate',
-                                      },
+                                    //   {
+                                    //       $Type            : 'Common.ValueListParameterIn',
+                                    //       LocalDataProperty: FIRST_DATE,
+                                    //       ValueListProperty: 'StartDate',
+                                    //   },
+                                    //   {
+                                    //       $Type            : 'Common.ValueListParameterIn',
+                                    //       LocalDataProperty: FIRST_DATE,
+                                    //       ValueListProperty: 'EndDate',
+                                    //   },
                                       {
                                           $Type            : 'Common.ValueListParameterInOut',
                                           LocalDataProperty: WBS_ELEMENT,

@@ -3,5 +3,8 @@
 - [Design](requirement/introduction.md)
   - [Assign Project Code](requirement/assign-codes/introduction.md)
     - [Data Modelling](requirement/assign-codes/data-modelling.md)
+  - [Manage Timesheet](requirement/superlock/introduction.md)
+    - [Manage Timesheet](requirement/superlock/manage-timesheet.md)
+    - [Superlock](requirement/superlock/superlock.md)
 - [API](API/index.md)
   - [Application Rouer](API/approuter/index.md)

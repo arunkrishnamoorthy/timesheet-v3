@@ -7,7 +7,7 @@ module.exports = async (srv) => {
     const projecttime = await cds.connect.to("YY1_DUMMYPROJECTTIME3_CDS");
 
     /**
-     * 
+     * Set the logged in user information
      */
     srv.before("*", "*", async (req) => {
         if(process.env.NODE_ENV === 'development') {

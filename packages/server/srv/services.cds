@@ -3,6 +3,7 @@ using from '../../ui/assignprojectcodes/annotations';
 using from '../../ui/assignprojectcodes/label';
 using from '../../ui/assignprojectcodes/layout';
 using from '../../ui/assignprojectcodes/value-help';
+using from '../../ui/assignprojectcodes/variants';
 
 // Stand In
 using from '../../ui/managestandinui/annotations';

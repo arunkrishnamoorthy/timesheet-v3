@@ -24,7 +24,16 @@ module.exports = async (srv) => {
         let where = req.query.SELECT.where;
 
         let filterParser = new FilterParser(where);
+        let aCountryFilters = filterParser.getFilterByProperty("Country");
+        let country = aCountryFilters[0]?.value || 'BE';
         let aEndDateFilters = filterParser.getFilterByProperty("EndDate");
+        let endDate = null;
+        if(aEndDateFilters){
+            endDate = new Date(aEndDateFilters[0]?.value);
+        } else {
+            endDate = new Date();
+        }
+        let yearMonth = endDate.getFullYear().toString() + ( endDate.getMonth() + 1 ); 
         let aPeronnelNumberFilters = filterParser.getFilterByProperty("PersonnelNumber");
         let aEmployeeTypeFilters = filterParser.getFilterByProperty("EmployeeType");
         let aUnitFilters = filterParser.getFilterByProperty("Unit");
@@ -33,16 +42,28 @@ module.exports = async (srv) => {
         let count = await currentUserApi.requestBuilder()
                                         .getAll()
                                         .filter(
-                                            currentUserApi.schema.COUNTRY.equals('BE')
+                                            currentUserApi.schema.COUNTRY.equals(country)
                                         )
                                         .count()
                                         .execute(destination);
+        let employeeData = await currentUserApi.requestBuilder()
+                                               .getAll()
+                                               .filter(
+                                                currentUserApi.schema.COUNTRY.equals(country)
+                                               )
+                                               .skip(skip)
+                                               .top(top)
+                                               .execute(destination);
         let periodFilter = [];
-        periodFilter.push(availabilityAPI.schema.YEAR_MONTH.equals('202312'));
+        periodFilter.push(availabilityAPI.schema.YEAR_MONTH.equals(yearMonth));
         let companyFilters = [];
-        let aCompanyCodes = companyCode.getCompanyCodeByCountry('NL');
+        let aCompanyCodes = companyCode.getCompanyCodeByCountry(country);
         aCompanyCodes.forEach((value) => {
             companyFilters.push(availabilityAPI.schema.COMPANY_CODE.equals(value));
+        });
+        let employeeFilter = [];
+        employeeData.forEach((employee) => {
+            employeeFilter.push(availabilityAPI.schema.PERSON_WORK_AGREEMENT.equals(employee.personWorkAgreement))
         });
         // let count = await availabilityAPI.requestBuilder()
         //                                  .getAll()
@@ -53,29 +74,28 @@ module.exports = async (srv) => {
         //                                   ))
         //                                  .count()
         //                                  .execute(destination);
-        const availabilityData = await availabilityAPI.requestBuilder()
-                                                   .getAll()
-                                                   .filter(and
-                                                    (
-                                                    or(...periodFilter),    
-                                                    or(...companyFilters)
-                                                    ))
-                                                   .skip(skip)
-                                                   .top(top)
-                                                   .execute(destination);
-        let result = availabilityData.map((result) => {
+        // const availabilityData = await availabilityAPI.requestBuilder()
+        //                                            .getAll()
+        //                                            .filter(and
+        //                                             (
+        //                                             or(...employeeFilter),
+        //                                             or(...periodFilter),    
+        //                                             or(...companyFilters)
+        //                                             ))
+        //                                            .execute(destination);
+        let result = employeeData.map((employee) => {
             return {
-                PersonnelNumber: result.personWorkAgreement1,
-                PersonFullName: result.personFullName,
-                PersonExternalID: result.personExternalId,  
-                CompanyCode: result.companyCode,
-                BusinessPartnerRole: result.businessPartnerRole,
-                BusinessPartnerRoleShortName: result.businessPartnerRoleShortName,
-                BusinessPartner: result.businessPartner,
+                PersonnelNumber: employee.personWorkAgreement,
+                PersonFullName: employee.personFullName,
+                PersonExternalID: employee.userId,  
+                CompanyCode: '9034',
+                BusinessPartnerRole: employee.businessPartnerRole,
+                BusinessPartnerRoleShortName: '',
+                BusinessPartner: employee.businessPartner,
                 AvailabilityInHours: "",
-                CostCenter: result.costCenter,
-                CostCenterName: result.costCenterName,
-                EndDate: result.endDate,
+                CostCenter: employee.costCenter,
+                CostCenterName: '',
+                EndDate: employee.endDate,
                 Country: "NL",
                 LockStatus: "Not Locked",
                 Unit: "S",
@@ -83,6 +103,27 @@ module.exports = async (srv) => {
                 EmployeeType: "Internal"
             }
         });
+        // availabilityData.map((result) => {
+        //     return {
+        //         PersonnelNumber: result.personWorkAgreement1,
+        //         PersonFullName: result.personFullName,
+        //         PersonExternalID: result.personExternalId,  
+        //         CompanyCode: result.companyCode,
+        //         BusinessPartnerRole: result.businessPartnerRole,
+        //         BusinessPartnerRoleShortName: result.businessPartnerRoleShortName,
+        //         BusinessPartner: result.businessPartner,
+        //         AvailabilityInHours: "",
+        //         CostCenter: result.costCenter,
+        //         CostCenterName: result.costCenterName,
+        //         EndDate: result.endDate,
+        //         Country: "NL",
+        //         LockStatus: "Not Locked",
+        //         Unit: "S",
+        //         Reason: "Not Locked",
+        //         EmployeeType: "Internal"
+        //     }
+        // });
+
         result.$count = count;
         return result;
     }); 

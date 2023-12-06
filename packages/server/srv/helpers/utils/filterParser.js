@@ -2,7 +2,6 @@
  * The purpose of this class is to parse the filters from the cap request object 
  * and return the filter condition
  */
-
 class FilterParser {
 
     /**

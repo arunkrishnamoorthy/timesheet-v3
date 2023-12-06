@@ -40,7 +40,7 @@ annotate service.EmployeeData with @(
                     {
                         Sign : #I,
                         Option: #EQ,
-                        Low: 'LX'
+                        Low: 'LU'
                     }
                 ]
             }
