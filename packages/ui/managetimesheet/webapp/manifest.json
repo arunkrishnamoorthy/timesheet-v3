@@ -167,6 +167,15 @@
           }
         }
       }
+    },
+    "extends": {
+      "extensions": {
+          "sap.ui.controllerExtensions": {
+              "sap.fe.templates.ListReport": {
+                  "controllerName": "com.ordinats.ui.managetimesheet.ext.controller.ListReportExtension"
+              }
+          }
+      }
     }
   },
   "sap.fiori": {
