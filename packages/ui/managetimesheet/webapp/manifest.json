@@ -133,6 +133,7 @@
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
+                    "type": "GridTable",
                     "enableFullScreen": true,
                     "enableExport": true
                   }
@@ -171,7 +172,7 @@
     "extends": {
       "extensions": {
           "sap.ui.controllerExtensions": {
-              "sap.fe.templates.ListReport": {
+              "sap.fe.templates.ListReport.ListReportController": {
                   "controllerName": "com.ordinats.ui.managetimesheet.ext.controller.ListReportExtension"
               }
           }

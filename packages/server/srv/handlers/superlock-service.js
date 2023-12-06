@@ -66,15 +66,20 @@ module.exports = async (srv) => {
         });
         let employeeFilter = [];
         let availabilityData = [];
-        if (parseInt(top) === 1000) {
-            // request came from the export to Excel. Adding 1000 records to the filter, will cause the 
+        if (parseInt(top) > 100) {
+            // request came from the export to Excel. Adding upto 1000 records to the filter, will cause the 
             // request payload to reach the limit and fail. split the request into multiple chunks and collect the data. 
             let newTop = 100;
             let newSkip = 0;
             let i = 0;
-            while(i < 10) {
-                let length = newTop;
-                let newEmployeeData = employeeData.slice(newSkip, length);
+            let length = employeeData.length;
+            let end = newTop;
+            let maxCount = Math.ceil(top/100);
+            while(i < maxCount) {
+                if(end > length) {
+                    end = length;
+                }
+                let newEmployeeData = employeeData.slice(newSkip, end);
                 employeeFilter = [];
                 newEmployeeData.forEach((employee) => {
                     employeeFilter.push(availabilityAPI.schema.PERSON_WORK_AGREEMENT.equals(employee.personWorkAgreement))
@@ -89,7 +94,7 @@ module.exports = async (srv) => {
                     ))
                 .execute(destination));
                 newSkip += newTop;
-                length += newTop;
+                end += newTop;
                 i++;
             }
         } else {
