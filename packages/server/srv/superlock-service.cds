@@ -4,5 +4,7 @@ service superlockService @(path: '/timesheet/superlock') {
 
     @cds.query.limit: 100
     entity EmployeeData as projection on superlock.employeeData;
+
+    entity Employees as projection on superlock.Employees;
     
 }

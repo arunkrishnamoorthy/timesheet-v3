@@ -18,6 +18,8 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension'], function (ControllerExten
                 // Table Reference
                 // let sId = "com.ordinats.ui.managetimesheet::EmployeeDataList--fe::table::belgium::LineItem::Table";
                 // var oTable = this.base.getExtensionAPI().byId(sId);
+				let valueHelp = this.getView().byId("com.ordinats.ui.managetimesheet::EmployeeDataList--fe::FilterBar::EmployeeData::FilterFieldValueHelp::PersonnelNumber");
+				valueHelp.attachOpen((event) => { debugger; });
             }
 		}
 	});

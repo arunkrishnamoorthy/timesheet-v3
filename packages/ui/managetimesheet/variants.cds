@@ -46,6 +46,45 @@ annotate service.EmployeeData with @(
             }
         ]
     },
+    UI.SelectionVariant#AllEmployee: {
+        Text: 'All',
+        SelectOptions: [
+            {
+                PropertyName: 'EmployeeType',
+                Ranges: [{
+                    Sign: #I,
+                    Option: #EQ,
+                    Low: ''
+                }]
+            }
+        ]
+    },
+    UI.SelectionVariant#Internal: {
+        Text: 'Internal',
+        SelectOptions: [
+            {
+                PropertyName: 'EmployeeType',
+                Ranges: [{
+                    Sign: #I,
+                    Option: #EQ,
+                    Low: 'Internal'
+                }]
+            }
+        ]
+    },
+    UI.SelectionVariant#External: {
+        Text: 'External',
+        SelectOptions: [
+            {
+                PropertyName: 'EmployeeType',
+                Ranges: [{
+                    Sign: #I,
+                    Option: #EQ,
+                    Low: 'External'
+                }]
+            }
+        ]
+    }
 );
 
 // annotate service.EmployeeData with @(

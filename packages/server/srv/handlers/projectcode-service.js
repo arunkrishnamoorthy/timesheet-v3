@@ -31,7 +31,6 @@ module.exports = async (srv) => {
             jsonString = jsonString.replace(/"PROJECT_NAME"/g, '"ProjectName"');
             orderbyExpression = JSON.parse(jsonString);
         }
-
         let aStaticFilters = [
             {
                 "ref": [

@@ -18,6 +18,43 @@ module.exports = async (srv) => {
     let companyCode = CompanyCodeFactory.getInstance();
 
     /**
+     * Employees Value Help
+     */
+    srv.on("READ", "Employees", async (req) => {
+        // Possible filters: PersonnelNumber, Country, EmployeeType
+        let top = req._queryOptions?.$top || 100;
+        let skip = req._queryOptions?.$skip || 0;
+        let where = req.query.SELECT.where;
+        let filterParser = new FilterParser(where);
+        let aCountryFilters = filterParser.getFilterByProperty("Country");
+        let country = aCountryFilters[0]?.value || 'BE';
+        let currentUserApi = new Yy1_CurrentUserApi2Api();
+        let count = await currentUserApi.requestBuilder()
+            .getAll()
+            .filter(
+                currentUserApi.schema.COUNTRY.equals(country)
+            )
+            .count()
+            .execute(destination);
+        let employeeData = await currentUserApi.requestBuilder()
+            .getAll()
+            .filter(
+                currentUserApi.schema.COUNTRY.equals(country)
+            )
+            .skip(skip)
+            .top(top)
+            .execute(destination);
+        let result = employeeData.map((employee) => {
+            return {
+                PersonnelNumber: employee.personWorkAgreement,
+                PersonFullName: employee.personFullName
+            }
+        });
+        result.$count = count;
+        return result;
+    });
+
+    /**
      * Get the employee data for superlock
      */
     srv.on("READ", "EmployeeData", async (req) => {
@@ -74,9 +111,9 @@ module.exports = async (srv) => {
             let i = 0;
             let length = employeeData.length;
             let end = newTop;
-            let maxCount = Math.ceil(top/100);
-            while(i < maxCount) {
-                if(end > length) {
+            let maxCount = Math.ceil(top / 100);
+            while (i < maxCount) {
+                if (end > length) {
                     end = length;
                 }
                 let newEmployeeData = employeeData.slice(newSkip, end);
@@ -85,14 +122,14 @@ module.exports = async (srv) => {
                     employeeFilter.push(availabilityAPI.schema.PERSON_WORK_AGREEMENT.equals(employee.personWorkAgreement))
                 });
                 availabilityData.push(await availabilityAPI.requestBuilder()
-                .getAll()
-                .filter(and
-                    (
-                        or(...employeeFilter),
-                        or(...periodFilter),
-                        or(...companyFilters)
-                    ))
-                .execute(destination));
+                    .getAll()
+                    .filter(and
+                        (
+                            or(...employeeFilter),
+                            or(...periodFilter),
+                            or(...companyFilters)
+                        ))
+                    .execute(destination));
                 newSkip += newTop;
                 end += newTop;
                 i++;
@@ -114,7 +151,7 @@ module.exports = async (srv) => {
         let mAvailabilityData = groupBy(availabilityData, 'personWorkAgreement');
         let result = employeeData.map((employee) => {
             let personAvailability = mAvailabilityData[employee.personWorkAgreement] || [];
-            let availabilityHours = aggregateBy(personAvailability,'personWorkAgreement');
+            let availabilityHours = aggregateBy(personAvailability, 'personWorkAgreement');
             return {
                 PersonnelNumber: employee.personWorkAgreement,
                 PersonFullName: employee.personFullName,

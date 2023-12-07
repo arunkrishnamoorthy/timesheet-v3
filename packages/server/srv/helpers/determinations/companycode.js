@@ -1,13 +1,26 @@
+/**
+ * This utility class for the Company Code, assist handling of the company code required for the query. 
+ * The fiori application splits the ui based on the country code. This class abstracts the the information 
+ * of the company codes and the UI application operate only by country code. Based on the country code selected
+ * in the UI, this singleton class reads and store the information of different company code and supplies the company
+ * code data as an when required in the Service handlers. This class is instantiated once during the start of the application
+ */
 const { CompanyCodeApi } = require('../../lib/API_COMPANYCODE_SRV/CompanyCodeApi');
 const { or, and } = require('@sap-cloud-sdk/odata-v2');
 const destination = { destinationName: 'S4HC_BTP_DEST' };
 class CompanyCode {
 
+    /**
+     * Instance constructor to initialize the company codes by country
+     */
     constructor() {
         this.mCompanyCodes = {};
         this.initializeCompanyCode();
     }
 
+    /**
+     * Initialize company code by country
+     */
     async initializeCompanyCode() {
         let api = new CompanyCodeApi();
         let filters = [];

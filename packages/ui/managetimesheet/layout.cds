@@ -2,8 +2,9 @@ using superlockService as service from '../../server/srv/superlock-service';
 
 annotate service.EmployeeData with @(
     UI.SelectionFields: [
+        EmployeeType, 
+        Country,
         PersonnelNumber,
-        EmployeeType,
         Unit,
         LockStatus,
     ]

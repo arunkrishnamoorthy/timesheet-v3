@@ -128,14 +128,29 @@
                     "key": "luxemberg",
                     "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Luxemberg"
                   }
-                ]
+                ],
+                "showCount" : true,
+                "count": true
               },
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
                     "type": "GridTable",
                     "enableFullScreen": true,
-                    "enableExport": true
+                    "enableExport": true,
+                    "quickVariantSelection": {
+                      "paths": [
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#AllEmployee"
+                        },
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Internal"
+                        },
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#External"
+                        }
+                      ]
+                    }
                   }
                 },
                 "@com.sap.vocabularies.UI.v1.SelectionFields": {

@@ -1,5 +1,12 @@
 namespace ordina.timesheet.superlock.db;
 
+entity Employees {
+    key PersonnelNumber : String(20);
+        PersonFullName: String(100);
+        EmployeeType: String(10);       
+        Country: String(2);
+}
+
 entity employeeData {
     key PersonnelNumber : String(20);
         PersonFullName: String(100);
