@@ -56,6 +56,14 @@ modules:
       - comordinatsuimanagetimesheet.zip
       name: comordinatsuimanagetimesheet
       target-path: resources/
+    - artifacts:
+      - beligumworklist.zip
+      name: beligumworklist
+      target-path: resources/
+    - artifacts:
+      - comordinatsuisuperlockbelgium.zip
+      name: comordinatsuisuperlockbelgium
+      target-path: resources/
 - name: comordinatsuiassignprojectcodes
   type: html5
   path: ../ui/assignprojectcodes/
@@ -79,6 +87,26 @@ modules:
 - name: comordinatsuimanagetimesheet
   type: html5
   path: app/managetimesheet
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: beligumworklist
+  type: html5
+  path: app/beligumworklist
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comordinatsuisuperlockbelgium
+  type: html5
+  path: app/superlockbelgium
   build-parameters:
     build-result: dist
     builder: custom

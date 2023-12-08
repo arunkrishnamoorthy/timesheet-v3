@@ -1,4 +1,9 @@
 namespace ordina.timesheet.superlock.db;
+using { sap.common.CodeList as CodeList } from '@sap/cds/common';
+
+entity EmployeeType: CodeList {
+    key code: String(6);
+}
 
 entity Employees {
     key PersonnelNumber : String(20);

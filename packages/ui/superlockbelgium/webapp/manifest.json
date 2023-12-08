@@ -1,7 +1,7 @@
 {
   "_version": "1.59.0",
   "sap.app": {
-    "id": "com.ordinats.ui.managetimesheet",
+    "id": "com.ordinats.ui.superlockbelgium",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
       "version": "1.11.5",
-      "toolsId": "4d9293b5-2b2d-4ebe-af0f-cfbe632e0f42"
+      "toolsId": "fa1e191c-03c8-4341-b662-446f500c52ae"
     },
     "dataSources": {
       "mainService": {
@@ -23,6 +23,20 @@
           "annotations": [],
           "localUri": "localService/metadata.xml",
           "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Superlock-belgium": {
+          "semanticObject": "Superlock",
+          "action": "belgium",
+          "title": "{{flpTitle}}",
+          "subTitle": "{{flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
         }
       }
     }
@@ -62,7 +76,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "com.ordinats.ui.managetimesheet.i18n.i18n"
+          "bundleName": "com.ordinats.ui.superlockbelgium.i18n.i18n"
         }
       },
       "": {
@@ -112,16 +126,16 @@
               "views": {
                 "paths" : [
                   {
-                    "key": "belgium",
-                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Belgium"
+                    "key": "notlocked",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#NotLocked"
                   },
                   {
-                    "key": "netherland",
-                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Netherlands"
+                    "key": "locked",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Locked"
                   },
                   {
-                    "key": "luxemberg",
-                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Luxemberg"
+                    "key": "superlocked",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Superlocked"
                   }
                 ],
                 "showCounts" : true
@@ -129,23 +143,10 @@
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-                    "type": "GridTable",
+                    "type": "ResponsiveTable",
+                    "selectionMode":"Single",
                     "enableFullScreen": true,
-                    "enableExport": true,
-                    "quickVariantSelection": {
-                      "paths": [
-                        {
-                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#AllEmployee"
-                        },
-                        {
-                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Internal"
-                        },
-                        {
-                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#External"
-                        }
-                      ],
-                      "showCounts": true
-                    }
+                    "enableExport": true
                   }
                 },
                 "@com.sap.vocabularies.UI.v1.SelectionFields": {
@@ -349,7 +350,7 @@
       "extensions": {
           "sap.ui.controllerExtensions": {
               "sap.fe.templates.ListReport.ListReportController": {
-                  "controllerName": "com.ordinats.ui.managetimesheet.ext.controller.ListReportExtension"
+                  "controllerName": "com.ordinats.ui.superlockbelgium.ext.controller.ListReportExtension"
               }
           }
       }

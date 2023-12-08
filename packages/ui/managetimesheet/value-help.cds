@@ -2,8 +2,26 @@ using superlockService as service from '../../server/srv/superlock-service';
 
 annotate service.EmployeeData with {
 
-    Country @Common : { FilterDefaultValue :  'BE' };
-    EmployeeType @Common: { FilterDefaultValue : 'I' };
+    EmployeeType @(
+        Common: {
+            ValueListWithFixedValues: true,
+            ValueList : {
+                $Type : 'Common.ValueListType',
+                CollectionPath : 'EmployeeTypes',
+                Parameters: [
+                    {
+                        $Type : 'Common.ValueListParameterInOut',
+                        LocalDataProperty : EmployeeType,
+                        ValueListProperty : 'name',
+                    },
+                    {
+                        $Type : 'Common.ValueListParameterDisplayOnly',
+                        ValueListProperty : 'descr',
+                    }
+                ]
+            }
+        }
+    );
 
     PersonnelNumber @(
         Common: {

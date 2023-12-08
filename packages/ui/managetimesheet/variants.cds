@@ -67,7 +67,7 @@ annotate service.EmployeeData with @(
                 Ranges: [{
                     Sign: #I,
                     Option: #EQ,
-                    Low: 'Internal'
+                    Low: 'BUP003'
                 }]
             }
         ]
@@ -80,7 +80,7 @@ annotate service.EmployeeData with @(
                 Ranges: [{
                     Sign: #I,
                     Option: #EQ,
-                    Low: 'External'
+                    Low: 'BBP005'
                 }]
             }
         ]

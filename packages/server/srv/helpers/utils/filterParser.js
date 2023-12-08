@@ -9,12 +9,12 @@ class FilterParser {
      * @param {Array} filters - Array of filter expression
      */
     constructor(filters) {
+        this.properties = [];
+        this.mFilters = {};
         if(filters.length === 0) {
            return;
         }
         this.filters = filters;
-        this.properties = [];
-        this.mFilters = {};
         this.loadFilters();
     }
 
@@ -31,6 +31,9 @@ class FilterParser {
      * @returns {Array} Array containing filter conditions
      */
     getFilterByProperty(sProperty) {
+        if(this.properties.indexOf(sProperty) < 0) {
+            return [];
+        }
         return this.mFilters[sProperty];
     }
 

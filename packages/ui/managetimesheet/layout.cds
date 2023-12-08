@@ -2,6 +2,7 @@ using superlockService as service from '../../server/srv/superlock-service';
 
 annotate service.EmployeeData with @(
     UI.SelectionFields: [
+        EndDate,
         EmployeeType, 
         Country,
         PersonnelNumber,
@@ -28,21 +29,12 @@ annotate service.EmployeeData with @(
             Value : PersonFullName,
             ![@UI.Importance]: #High
         },
-        {
-            $Type : 'UI.DataField',
-            Label : 'PersonExternalID',
-            Value : PersonExternalID,
-        },
+        
         {
             $Type : 'UI.DataField',
             Label : 'CompanyCode',
             Value : CompanyCode,
             ![@UI.Importance]: #High
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'BusinessPartnerRole',
-            Value : BusinessPartnerRole,
         },
         {
             $Type : 'UI.DataField',
@@ -68,6 +60,12 @@ annotate service.EmployeeData with @(
             Value : LockStatus,
             ![@UI.Importance]: #High
         },
+        {
+            $Type : 'UI.DataField',
+            Label : 'Availability(Hours)',
+            Value : AvailabilityInHours,
+            ![@UI.Importance]: #High
+        }
     ]
 );
 annotate service.EmployeeData with @(

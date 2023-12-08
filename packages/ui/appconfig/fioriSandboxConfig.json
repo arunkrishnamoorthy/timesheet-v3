@@ -51,7 +51,8 @@
                     "id": "idAppSuperlock",
                     "tileType": "sap.ushell.ui.tile.DynamicTile",
                     "properties": {
-                      "title": "Superlock",
+                      "title": "Superlock Overview",
+                      "subtitle": "belgium",
                       "targetURL": "#Superlock-manage"
                     }
                   }
@@ -167,8 +168,8 @@
                 },
                 "resolutionResult": {
                   "applicationType": "SAPUI5",
-                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.assignprojectcodes",
-                  "url": "superlock/webapp"
+                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.superlockbelgium",
+                  "url": "superlockbelgium/webapp"
                 }
               }
             }

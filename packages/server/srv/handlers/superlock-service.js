@@ -18,13 +18,37 @@ module.exports = async (srv) => {
     let companyCode = CompanyCodeFactory.getInstance();
 
     /**
+     * Employee Types Value help 
+     */
+    srv.on("READ", "EmployeeTypes", async(req) => {
+        let result = [];
+        result.push({
+            code: '1',
+            name: '',
+            descr: 'All'
+        });
+        result.push({
+            code: '2',
+            name: 'BUP003',
+            descr: 'Internal'
+        });
+        result.push({
+            code: '3',
+            name: 'BBP005',
+            descr: 'External'
+        });
+        result.$count = result.length;
+        return result;
+    });
+
+    /**
      * Employees Value Help
      */
     srv.on("READ", "Employees", async (req) => {
         // Possible filters: PersonnelNumber, Country, EmployeeType
         let top = req._queryOptions?.$top || 100;
         let skip = req._queryOptions?.$skip || 0;
-        let where = req.query.SELECT.where;
+        let where = req.query.SELECT.where || [];
         let filterParser = new FilterParser(where);
         let aCountryFilters = filterParser.getFilterByProperty("Country");
         let country = aCountryFilters[0]?.value || 'BE';
@@ -61,8 +85,9 @@ module.exports = async (srv) => {
         // Possible filters: YearMonth, Status, Country
         let top = req._queryOptions?.$top || 100;
         let skip = req._queryOptions?.$skip || 0;
-        let where = req.query.SELECT.where;
-
+        let where = req.query.SELECT.where || [];
+        let currentUserApi = new Yy1_CurrentUserApi2Api();
+        let availabilityAPI = new Yy1_Wa_AvailabilityApi();
         let filterParser = new FilterParser(where);
         let aCountryFilters = filterParser.getFilterByProperty("Country");
         let country = aCountryFilters[0]?.value || 'BE';
@@ -75,21 +100,35 @@ module.exports = async (srv) => {
         }
         let yearMonth = endDate.getFullYear().toString() + (endDate.getMonth() + 1);
         let aPeronnelNumberFilters = filterParser.getFilterByProperty("PersonnelNumber");
-        let aEmployeeTypeFilters = filterParser.getFilterByProperty("EmployeeType");
         let aUnitFilters = filterParser.getFilterByProperty("Unit");
-        let currentUserApi = new Yy1_CurrentUserApi2Api();
-        let availabilityAPI = new Yy1_Wa_AvailabilityApi();
+        let aEmployeTypeConditions = filterParser.getFilterByProperty("EmployeeType");
+        let aCountryFilterCurrentUser = [];
+        aCountryFilters.forEach((country) => {
+            aCountryFilterCurrentUser.push(currentUserApi.schema.COUNTRY.equals(country.value));
+        });
+        let aEmployeeTypeFilters = [];
+        aEmployeTypeConditions.forEach((employeeType) => {
+            if(employeeType.value !== ''){
+                aEmployeeTypeFilters.push(currentUserApi.schema.BUSINESS_PARTNER_ROLE.equals(employeeType.value));
+            }
+        });
         let count = await currentUserApi.requestBuilder()
             .getAll()
             .filter(
-                currentUserApi.schema.COUNTRY.equals(country)
+                and(
+                    or(...aCountryFilterCurrentUser),
+                    or(...aEmployeeTypeFilters)     
+                )
             )
             .count()
             .execute(destination);
         let employeeData = await currentUserApi.requestBuilder()
             .getAll()
             .filter(
-                currentUserApi.schema.COUNTRY.equals(country)
+                and(
+                    or(...aCountryFilterCurrentUser),
+                    or(...aEmployeeTypeFilters)     
+                )
             )
             .skip(skip)
             .top(top)
@@ -168,7 +207,7 @@ module.exports = async (srv) => {
                 LockStatus: "Not Locked",
                 Unit: "S",
                 Reason: "Not Locked",
-                EmployeeType: "Internal",
+                EmployeeType: ( employee.businessPartnerRole === "BUP003" ) ? "Internal" : "External",
                 HoursDecimal: availabilityHours
             }
         });

@@ -18,3 +18,8 @@ using from '../../ui/managetimesheet/capabilities';
 using from '../../ui/managetimesheet/variants';
 using from '../../ui/managetimesheet/label';
 using from '../../ui/managetimesheet/value-help';
+
+// Superlock Belgium 
+using from '../../ui/superlockbelgium/annotations';
+using from '../../ui/superlockbelgium/variants';
+using from '../../ui/superlockbelgium/layout_belgium';
