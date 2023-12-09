@@ -41,6 +41,23 @@
                 ]
               },
               {
+                "id": "idSuperlockOverview",
+                "title": "Superlock overview",
+                "isPreset": true,
+                "isVisible": true,
+                "isGroupLocked": false,
+                "tiles": [
+                  {
+                    "id": "idManageSuperlock",
+                    "tileType": "sap.ushell.ui.tile.StaticTile",
+                    "properties": {
+                      "title": "Manage Superlock",
+                      "targetURL": "#Superlock-manage"
+                    }
+                  }
+                ]
+              },
+              {
                 "id": "idSuperlock",
                 "title": "Superlock",
                 "isPreset": true,
@@ -176,6 +193,21 @@
                 }
               },
               "SuperlockManage": {
+                "semanticObject": "Superlock",
+                "action": "manage",
+                "title": "Superlock",
+                "signature": {
+                  "parameters": {
+                  },
+                  "additionalParameters": "ignored"
+                },
+                "resolutionResult": {
+                  "applicationType": "SAPUI5",
+                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.managesuperlock",
+                  "url": "managesuperlock/webapp"
+                }
+              },
+              "SuperlockManageBl": {
                 "semanticObject": "Superlock",
                 "action": "belgium",
                 "title": "Superlock",

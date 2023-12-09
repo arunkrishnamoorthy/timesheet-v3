@@ -64,6 +64,10 @@ modules:
       - comordinatsuisuperlockbelgium.zip
       name: comordinatsuisuperlockbelgium
       target-path: resources/
+    - artifacts:
+      - comordinatsuimanagesuperlock.zip
+      name: comordinatsuimanagesuperlock
+      target-path: resources/
 - name: comordinatsuiassignprojectcodes
   type: html5
   path: ../ui/assignprojectcodes/
@@ -107,6 +111,16 @@ modules:
 - name: comordinatsuisuperlockbelgium
   type: html5
   path: app/superlockbelgium
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comordinatsuimanagesuperlock
+  type: html5
+  path: app/managesuperlock
   build-parameters:
     build-result: dist
     builder: custom

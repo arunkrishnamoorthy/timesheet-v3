@@ -36,7 +36,8 @@
         "watch-managestandinui": "cds watch --open managestandinui/webapp/index.html?sap-ui-xx-viewCache=false",
         "watch-managetimesheet": "cds watch --open managetimesheet/webapp/index.html?sap-ui-xx-viewCache=false",
         "watch-beligumworklist": "cds watch --open beligumworklist/webapp/index.html?sap-ui-xx-viewCache=false",
-        "watch-superlockbelgium": "cds watch --open superlockbelgium/webapp/index.html?sap-ui-xx-viewCache=false"
+        "watch-superlockbelgium": "cds watch --open superlockbelgium/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-managesuperlock": "cds watch --open managesuperlock/webapp/index.html?sap-ui-xx-viewCache=false"
     },
     "cds": {
         "requires": {
@@ -152,6 +153,7 @@
     },
     "sapux": [
         "app/superlockbelgium",
-        "app/superlockbelgium"
+        "app/superlockbelgium",
+        "app/managesuperlock"
     ]
 }

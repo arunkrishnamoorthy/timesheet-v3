@@ -1,0 +1,349 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "com.ordinats.ui.managesuperlock",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.11.5",
+      "toolsId": "0308ec10-0598-4a46-a0e3-81eba4b2fafa"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/timesheet/superlock/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Superlock-manage": {
+          "semanticObject": "Superlock",
+          "action": "manage",
+          "title": "{{flpTitle}}",
+          "subTitle": "{{flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.ordinats.ui.managesuperlock.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "EmployeeDataList",
+          "target": "EmployeeDataList"
+        }
+      ],
+      "targets": {
+        "EmployeeDataList": {
+          "type": "Component",
+          "id": "EmployeeDataList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/EmployeeData",
+              "variantManagement": "Page",
+              "navigation": {
+              },
+              "initialLoad": true,
+              "views": {
+                "paths" : [
+                  {
+                    "key": "notlocked",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#managespvlocked"
+                  },
+                  {
+                    "key": "locked",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#managespvunlocked"
+                  },
+                  {
+                    "key": "superlocked",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#managespvsuperlock"
+                  }
+                ],
+                "showCounts" : true
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable",
+                    "selectionMode":"Single",
+                    "enableFullScreen": true,
+                    "enableExport": true
+                  }
+                },
+                "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                  "filterFields": {
+                    "EndDate": {
+                      "settings": {
+                        "defaultValues": [{"operator": "THISMONTH"}],
+                        "operatorConfiguration": [
+                          {
+                            "path": "key",
+                             "equals": "DATE",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "FROM",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "TO",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "DATERANGE",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "TODAY",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "YESTERDAY",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "TOMORROW",
+                             "exclude": true
+                          },
+                          {
+                              "path": "key",
+                               "equals": "TODAYFROMTO",
+                               "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "LASTDAYS",
+                             "exclude": true
+                          } ,
+                          {
+                            "path": "key",
+                             "equals": "NEXTDAYS",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "THISWEEK",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "LASTWEEK",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "LASTWEEKS",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "NEXTWEEK",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "NEXTWEEKS",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "TODAYXYDAYS",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "YEARTODATE",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "DATETOYEAR",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "LASTMONTH",
+                             "exclude": false
+                          },
+                          {
+                            "path": "key",
+                             "equals": "LASTMONTHS",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "NEXTMONTH",
+                             "exclude": false
+                          },
+                          {
+                            "path": "key",
+                             "equals": "NEXTMONTHS",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "THISQUARTER",
+                             "exclude": false
+                          },
+                          {
+                            "path": "key",
+                             "equals": "LASTQUARTER",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "LASTQUARTERS",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "NEXTQUARTER",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "NEXTQUARTERS",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "QUARTER1",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "QUARTER2",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "QUARTER3",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "QUARTER4",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "THISYEAR",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "LASTYEAR",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "LASTYEARS",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "NEXTYEAR",
+                             "exclude": true
+                          },
+                          {
+                            "path": "key",
+                             "equals": "NEXTYEARS",
+                             "exclude": true
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}
