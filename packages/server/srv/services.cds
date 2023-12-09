@@ -24,11 +24,11 @@ using from '../../ui/superlockbelgium/annotations';
 using from '../../ui/superlockbelgium/variants';
 using from '../../ui/superlockbelgium/layout_belgium';
 using from '../../ui/superlockbelgium/layout_locked';
-using from '../../ui/superlockbelgium/layout_superlock';
+using from '../../ui/superlockbelgium/layout_unlocked';
 using from '../../ui/superlockbelgium/layout_superlock';
 
 // Superlock manage
 using from '../../ui/managesuperlock/annotations';
-using from '../../ui/managesuperlock/layout_locked';
-using from '../../ui/managesuperlock/layout_superlock';
+using from '../../ui/managesuperlock/layout_locked1';
+using from '../../ui/managesuperlock/layout_unlocked';
 using from '../../ui/managesuperlock/layout_superlock';
