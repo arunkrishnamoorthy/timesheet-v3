@@ -7,6 +7,9 @@ service superlockService @(path: '/timesheet/superlock') {
         action UnlockToLocked();
         action LockedToSuperlock();
     }
+    action LockAll();
+    action SuperLockAll();
+    action UnlockAll();
 
     entity Employees as projection on superlock.Employees;
     entity EmployeeTypes as projection on superlock.EmployeeType;

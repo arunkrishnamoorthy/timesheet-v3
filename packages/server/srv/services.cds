@@ -23,3 +23,6 @@ using from '../../ui/managetimesheet/value-help';
 using from '../../ui/superlockbelgium/annotations';
 using from '../../ui/superlockbelgium/variants';
 using from '../../ui/superlockbelgium/layout_belgium';
+using from '../../ui/superlockbelgium/layout_locked';
+using from '../../ui/superlockbelgium/layout_superlock';
+using from '../../ui/superlockbelgium/layout_unlocked';

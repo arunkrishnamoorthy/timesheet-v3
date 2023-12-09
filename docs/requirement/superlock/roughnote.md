@@ -58,3 +58,5 @@ PersonFullName:'Nawfal Oumach'
 
 https://jsoneditoronline.org/#left=cloud.ba5ee8b7824e438094b8c51529d54900&right=local.locowa
 
+
+"defaultTemplateAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#belgiumspv",

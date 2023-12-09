@@ -116,26 +116,22 @@
               "contextPath": "/EmployeeData",
               "variantManagement": "Page",
               "navigation": {
-                "EmployeeData": {
-                  "detail": {
-                    "route": "EmployeeDataObjectPage"
-                  }
-                }
+
               },
               "initialLoad": true,
               "views": {
                 "paths" : [
                   {
                     "key": "notlocked",
-                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#NotLocked"
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#belgiumunlockedspv"
                   },
                   {
                     "key": "locked",
-                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Locked"
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#belgiumlockedspv"
                   },
                   {
                     "key": "superlocked",
-                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Superlocked"
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#belgiumsuperlockedspv"
                   }
                 ],
                 "showCounts" : true
