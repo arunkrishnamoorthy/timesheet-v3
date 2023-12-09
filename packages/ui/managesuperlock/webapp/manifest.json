@@ -121,12 +121,12 @@
               "views": {
                 "paths" : [
                   {
-                    "key": "notlocked",
-                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#managespvlocked"
-                  },
-                  {
                     "key": "locked",
                     "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#managespvunlocked"
+                  },
+                  {
+                    "key": "notlocked",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#managespvlocked"
                   },
                   {
                     "key": "superlocked",
@@ -136,12 +136,67 @@
                 "showCounts" : true
               },
               "controlConfiguration": {
-                "@com.sap.vocabularies.UI.v1.LineItem": {
+                "@com.sap.vocabularies.UI.v1.LineItem#manageunlocked": {
                   "tableSettings": {
                     "type": "ResponsiveTable",
-                    "selectionMode":"Single",
                     "enableFullScreen": true,
-                    "enableExport": true
+                    "enableExport": true,
+                    "quickVariantSelection": {
+                      "paths": [
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#superlocksvBelgium"
+                        },
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#superlocksvNetherlands"
+                        },
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#superlocksvLuxemberg"
+                        }
+                      ],
+                      "showCounts": true
+                    }
+                  }
+                },
+                "@com.sap.vocabularies.UI.v1.LineItem#managedlocked": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable",
+                    "enableFullScreen": true,
+                    "enableExport": true,
+                    "quickVariantSelection": {
+                      "paths": [
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#superlocksvBelgium"
+                        },
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#superlocksvNetherlands"
+                        },
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#superlocksvLuxemberg"
+                        }
+                      ],
+                      "showCounts": true
+                    }
+                  }
+                },
+                "@com.sap.vocabularies.UI.v1.LineItem#mangesuperlock": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable",
+                    "enableFullScreen": true,
+                    "enableExport": true,
+                    "quickVariantSelection": {
+                      "paths": [
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#superlocksvBelgium"
+                        },
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#superlocksvNetherlands"
+                        },
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#superlocksvLuxemberg"
+                        }
+                      ],
+                      "showCounts": true
+                    }
                   }
                 },
                 "@com.sap.vocabularies.UI.v1.SelectionFields": {

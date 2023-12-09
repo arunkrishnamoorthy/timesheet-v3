@@ -59,7 +59,7 @@
               },
               {
                 "id": "idSuperlock",
-                "title": "Superlock",
+                "title": "Superlock by Country",
                 "isPreset": true,
                 "isVisible": true,
                 "isGroupLocked": false,

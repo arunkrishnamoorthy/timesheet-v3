@@ -1,6 +1,8 @@
 using superlockService as service from '../../server/srv/superlock-service';
 
-annotate service.EmployeeData with @(UI.LineItem#managedlocked: [
+annotate service.EmployeeData with @(
+   
+   UI.LineItem#managedlocked: [
    {
       $Type : 'UI.DataFieldForAction',
       Action: 'superlockService.UnlockToLocked',
@@ -80,8 +82,10 @@ annotate service.EmployeeData with @(
    }
 );
 
+
+
 annotate service.EmployeeData with @(
-   UI.PresentationVariant#managepvlocked: {
+   UI.PresentationVariant#managepvlocked: { 
       Visualizations: ['@UI.LineItem#managedlocked']
    }
 );

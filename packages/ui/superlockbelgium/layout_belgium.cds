@@ -1,10 +1,10 @@
 using superlockService as service from '../../server/srv/superlock-service';
 
-annotate service.EmployeeData with {
-   Country
-   @UI.HiddenFilter
-   @Common: {FilterDefaultValue: 'BE'};
-}
+// annotate service.EmployeeData with {
+//    Country
+//    @UI.HiddenFilter
+//    @Common: {FilterDefaultValue: 'BE'};
+// }
 
 // annotate service.EmployeeData with @(UI.LineItem#belgium: [
 //    {
