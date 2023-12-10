@@ -47,6 +47,14 @@ class User {
     }
 
     /**
+     * Get the logged in user cost center
+     * @returns {CostCenter} String
+     */
+    getCostCenter() {
+        return this.user.CostCenter;
+    }
+
+    /**
      * Validate if the user already exists in the cache.
      * @returns {Boolean} 
      */

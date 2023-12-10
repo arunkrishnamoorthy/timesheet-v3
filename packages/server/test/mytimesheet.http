@@ -1,0 +1,10 @@
+@url= http://localhost:4004
+
+### Get Projects 
+GET {{url}}/timesheet/mytimesheet/Projects
+
+### Get Dummy Projects
+GET {{url}}/timesheet/mytimesheet/DummyProjects
+
+### Get General Projects 
+GET {{url}}/timesheet/mytimesheet/GeneralProjects

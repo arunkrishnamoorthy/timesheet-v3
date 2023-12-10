@@ -1,0 +1,63 @@
+{
+ "meta": {
+  "creator": "cds-dk 7.4.0"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "YY1_TimeSheetTaskType_CDS": {
+   "kind": "service",
+   "@cds.external": true,
+   "@m.IsDefaultEntityContainer": "true",
+   "@sap.message.scope.supported": "true",
+   "@sap.supported.formats": "atom json xlsx"
+  },
+  "YY1_TimeSheetTaskType_CDS.YY1_TimeSheetTaskType": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.creatable": "false",
+   "@sap.updatable": "false",
+   "@sap.deletable": "false",
+   "@sap.content.version": "1",
+   "@sap.label": "TimeSheetTaskType",
+   "elements": {
+    "TimeSheetTaskType": {
+     "key": true,
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Task Type",
+     "notNull": true
+    },
+    "Language": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Language Key"
+    },
+    "TimeSheetTaskType_1": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.text": "TimeSheetTaskTypeText",
+     "@sap.label": "Task Type"
+    },
+    "TimeSheetTaskTypeText": {
+     "type": "cds.String",
+     "length": 25,
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Description"
+    },
+    "TimeSheetTaskTypeRelevanceCode": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.required.in.filter": "false",
+     "@sap.label": "Task Type Relevance"
+    }
+   }
+  }
+ }
+}

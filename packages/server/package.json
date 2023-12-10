@@ -1,159 +1,163 @@
 {
-    "name": "server",
-    "version": "1.0.0",
-    "description": "A simple CAP project.",
-    "repository": "<Add your repository here>",
-    "license": "UNLICENSED",
-    "private": true,
-    "dependencies": {
-        "@sap-cloud-sdk/http-client": "^3.8.1",
-        "@sap-cloud-sdk/odata-v2": "^3.8.1",
-        "@sap-cloud-sdk/odata-v4": "^3.8.1",
-        "@sap-cloud-sdk/resilience": "^3.8.1",
-        "@sap-cloud-sdk/util": "^3.8.1",
-        "@sap/cds": "^7",
-        "@sap/cloud-sdk-core": "^1.17.2",
-        "@sap/xsenv": "^4.2.0",
-        "@sap/xssec": "^3.6.0",
-        "exceljs": "^4.4.0",
-        "express": "^4",
-        "passport": "^0"
-    },
-    "devDependencies": {
-        "@cap-js/sqlite": "^1",
-        "@sap-cloud-sdk/generator": "^3.8.1",
-        "@sap/cds-dk": "^7",
-        "@sap/ux-specification": "^1.120.0",
-        "rimraf": "^3.0.2"
-    },
-    "scripts": {
-        "start": "cds-serve",
-        "dev": "cds watch --in-memory --profile hybrid",
-        "watch-assignprojectcodes": "cds watch --open assignprojectcodes/webapp/index.html?sap-ui-xx-viewCache=false",
-        "undeploy": "cf undeploy ordinats --delete-services --delete-service-keys --delete-service-brokers",
-        "build": "rimraf resources mta_archives && mbt build --mtar archive",
-        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
-        "watch-managestandinui": "cds watch --open managestandinui/webapp/index.html?sap-ui-xx-viewCache=false",
-        "watch-managetimesheet": "cds watch --open managetimesheet/webapp/index.html?sap-ui-xx-viewCache=false",
-        "watch-beligumworklist": "cds watch --open beligumworklist/webapp/index.html?sap-ui-xx-viewCache=false",
-        "watch-superlockbelgium": "cds watch --open superlockbelgium/webapp/index.html?sap-ui-xx-viewCache=false",
-        "watch-managesuperlock": "cds watch --open managesuperlock/webapp/index.html?sap-ui-xx-viewCache=false"
-    },
-    "cds": {
-        "requires": {
-            "db": {
-                "kind": "hana-cloud"
-            },
-            "auth": "xsuaa",
-            "YY1_CurrentUserAPI2_CDS": {
-                "kind": "odata-v2",
-                "model": "srv/external/YY1_CurrentUserAPI2_CDS",
-                "[hybrid]": {
-                    "credentials": {
-                        "destination": "S4HC_BTP_DEST",
-                        "path": "/sap/opu/odata/sap/YY1_CurrentUserAPI2_CDS"
-                    }
-                },
-                "csrf": true,
-                "csrfInBatch": true
-            },
-            "API_MANAGE_WORKFORCE_TIMESHEET": {
-                "kind": "odata-v2",
-                "model": "srv/external/API_MANAGE_WORKFORCE_TIMESHEET",
-                "[hybrid]": {
-                    "credentials": {
-                        "destination": "S4HC_BTP_DEST",
-                        "path": "/sap/opu/odata/sap/API_MANAGE_WORKFORCE_TIMESHEET"
-                    }
-                },
-                "csrf": true,
-                "csrfInBatch": true
-            },
-            "YY1_DUMMYPROJECT_CDS": {
-                "kind": "odata-v2",
-                "model": "srv/external/YY1_DUMMYPROJECT_CDS",
-                "credentials": {
-                    "destination": "S4HC_BTP_DEST",
-                    "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECT_CDS"
-                },
-                "[production]": {
-                    "credentials": {
-                        "destination": "S4HC_BTP_DEST",
-                        "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECT_CDS"
-                    }
-                },
-                "[development]": {
-                    "credentials": {
-                        "destination": "S4HC_BTP_DEST",
-                        "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECT_CDS"
-                    }
-                },
-                "[hybrid]": {
-                    "credentials": {
-                        "destination": "S4HC_BTP_DEST",
-                        "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECT_CDS"
-                    }
-                },
-                "csrf": true,
-                "csrfInBatch": true
-            },
-            "YY1_DUMMYPROJECTTIME3_CDS": {
-                "kind": "odata-v2",
-                "model": "srv/external/YY1_DUMMYPROJECTTIME3_CDS",
-                "credentials": {
-                    "destination": "S4HC_BTP_DEST",
-                    "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECTTIME3_CDS"
-                },
-                "[hybrid]": {
-                    "credentials": {
-                        "destination": "S4HC_BTP_DEST",
-                        "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECTTIME3_CDS"
-                    }
-                },
-                "csrf": true,
-                "csrfInBatch": true
-            },
-            "YY1_PROJECTSTAFFING_2_CDS": {
-                "kind": "odata-v2",
-                "model": "srv/external/YY1_PROJECTSTAFFING_2_CDS",
-                "credentials": {
-                    "destination": "S4HC_BTP_DEST",
-                    "path": "/sap/opu/odata/sap/YY1_PROJECTSTAFFING_2_CDS"
-                },
-                "[hybrid]": {
-                    "credentials": {
-                        "destination": "S4HC_BTP_DEST",
-                        "path": "/sap/opu/odata/sap/YY1_PROJECTSTAFFING_2_CDS"
-                    }
-                },
-                "csrf": true,
-                "csrfInBatch": true
-            },
-            "YY1_WA_AVAILABILITY_CDS": {
-                "kind": "odata-v2",
-                "model": "srv/external/YY1_WA_AVAILABILITY_CDS",
-                "credentials": {
-                    "destination": "S4HC_BTP_DEST",
-                    "path": "/sap/opu/odata/sap/YY1_PROJECTSTAFFING_2_CDS"
-                },
-                "[hybrid]": {
-                    "credentials": {
-                        "destination": "S4HC_BTP_DEST",
-                        "path": "/sap/opu/odata/sap/YY1_PROJECTSTAFFING_2_CDS"
-                    }
-                },
-                "csrf": true,
-                "csrfInBatch": true
-            },
-            "API_COMPANYCODE_SRV": {
-                "kind": "odata-v2",
-                "model": "srv/external/API_COMPANYCODE_SRV"
-            }
-        }
-    },
-    "sapux": [
-        "app/superlockbelgium",
-        "app/superlockbelgium",
-        "app/managesuperlock"
-    ]
+  "name": "server",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.8.1",
+    "@sap-cloud-sdk/odata-v2": "^3.8.1",
+    "@sap-cloud-sdk/odata-v4": "^3.8.1",
+    "@sap-cloud-sdk/resilience": "^3.8.1",
+    "@sap-cloud-sdk/util": "^3.8.1",
+    "@sap/cds": "^7",
+    "@sap/cloud-sdk-core": "^1.17.2",
+    "@sap/xsenv": "^4.2.0",
+    "@sap/xssec": "^3.6.0",
+    "exceljs": "^4.4.0",
+    "express": "^4",
+    "passport": "^0"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap-cloud-sdk/generator": "^3.8.1",
+    "@sap/cds-dk": "^7",
+    "@sap/ux-specification": "^1.120.0",
+    "rimraf": "^3.0.2"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "dev": "cds watch --in-memory --profile hybrid",
+    "watch-assignprojectcodes": "cds watch --open assignprojectcodes/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy ordinats --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-managestandinui": "cds watch --open managestandinui/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-managetimesheet": "cds watch --open managetimesheet/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-beligumworklist": "cds watch --open beligumworklist/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-superlockbelgium": "cds watch --open superlockbelgium/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-managesuperlock": "cds watch --open managesuperlock/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "hana-cloud"
+      },
+      "auth": "xsuaa",
+      "YY1_CurrentUserAPI2_CDS": {
+        "kind": "odata-v2",
+        "model": "srv/external/YY1_CurrentUserAPI2_CDS",
+        "[hybrid]": {
+          "credentials": {
+            "destination": "S4HC_BTP_DEST",
+            "path": "/sap/opu/odata/sap/YY1_CurrentUserAPI2_CDS"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "API_MANAGE_WORKFORCE_TIMESHEET": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_MANAGE_WORKFORCE_TIMESHEET",
+        "[hybrid]": {
+          "credentials": {
+            "destination": "S4HC_BTP_DEST",
+            "path": "/sap/opu/odata/sap/API_MANAGE_WORKFORCE_TIMESHEET"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "YY1_DUMMYPROJECT_CDS": {
+        "kind": "odata-v2",
+        "model": "srv/external/YY1_DUMMYPROJECT_CDS",
+        "credentials": {
+          "destination": "S4HC_BTP_DEST",
+          "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECT_CDS"
+        },
+        "[production]": {
+          "credentials": {
+            "destination": "S4HC_BTP_DEST",
+            "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECT_CDS"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "S4HC_BTP_DEST",
+            "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECT_CDS"
+          }
+        },
+        "[hybrid]": {
+          "credentials": {
+            "destination": "S4HC_BTP_DEST",
+            "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECT_CDS"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "YY1_DUMMYPROJECTTIME3_CDS": {
+        "kind": "odata-v2",
+        "model": "srv/external/YY1_DUMMYPROJECTTIME3_CDS",
+        "credentials": {
+          "destination": "S4HC_BTP_DEST",
+          "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECTTIME3_CDS"
+        },
+        "[hybrid]": {
+          "credentials": {
+            "destination": "S4HC_BTP_DEST",
+            "path": "/sap/opu/odata/sap/YY1_DUMMYPROJECTTIME3_CDS"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "YY1_PROJECTSTAFFING_2_CDS": {
+        "kind": "odata-v2",
+        "model": "srv/external/YY1_PROJECTSTAFFING_2_CDS",
+        "credentials": {
+          "destination": "S4HC_BTP_DEST",
+          "path": "/sap/opu/odata/sap/YY1_PROJECTSTAFFING_2_CDS"
+        },
+        "[hybrid]": {
+          "credentials": {
+            "destination": "S4HC_BTP_DEST",
+            "path": "/sap/opu/odata/sap/YY1_PROJECTSTAFFING_2_CDS"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "YY1_WA_AVAILABILITY_CDS": {
+        "kind": "odata-v2",
+        "model": "srv/external/YY1_WA_AVAILABILITY_CDS",
+        "credentials": {
+          "destination": "S4HC_BTP_DEST",
+          "path": "/sap/opu/odata/sap/YY1_PROJECTSTAFFING_2_CDS"
+        },
+        "[hybrid]": {
+          "credentials": {
+            "destination": "S4HC_BTP_DEST",
+            "path": "/sap/opu/odata/sap/YY1_PROJECTSTAFFING_2_CDS"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "API_COMPANYCODE_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_COMPANYCODE_SRV"
+      },
+      "YY1_TimeSheetTaskType_CDS": {
+        "kind": "odata-v2",
+        "model": "srv/external/YY1_TimeSheetTaskType_CDS"
+      }
+    }
+  },
+  "sapux": [
+    "app/superlockbelgium",
+    "app/superlockbelgium",
+    "app/managesuperlock"
+  ]
 }
