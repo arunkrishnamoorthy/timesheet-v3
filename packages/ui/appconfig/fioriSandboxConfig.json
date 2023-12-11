@@ -188,7 +188,7 @@
                 },
                 "resolutionResult": {
                   "applicationType": "SAPUI5",
-                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.assignprojectcodes",
+                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.mytimesheet",
                   "url": "mytimesheet/webapp"
                 }
               },
@@ -233,8 +233,8 @@
                 },
                 "resolutionResult": {
                   "applicationType": "SAPUI5",
-                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.superlockbelgium",
-                  "url": "superlockbelgium/webapp"
+                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.superlocknetherland",
+                  "url": "superlocknetherland/webapp"
                 }
               },
               "SuperlockManageLU": {
@@ -248,8 +248,8 @@
                 },
                 "resolutionResult": {
                   "applicationType": "SAPUI5",
-                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.superlockbelgium",
-                  "url": "superlockbelgium/webapp"
+                  "additionalInformation": "SAPUI5.Component=com.ordinats.ui.superlockluxemburg",
+                  "url": "superlockluxemburg/webapp"
                 }
               }
             }

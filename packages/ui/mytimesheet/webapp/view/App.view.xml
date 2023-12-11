@@ -1,0 +1,158 @@
+<mvc:View controllerName="com.ordinats.ui.mytimesheet.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:tnt="sap.tnt"
+    xmlns="sap.m">
+            <tnt:ToolPage id="toolPage">
+            <tnt:header>
+		    	<tnt:ToolHeader id="idTh1" class="sapUiContentPadding">
+                    <Button id="id1" icon="sap-icon://expand-all" press="handleToggle" />
+                    <ToolbarSpacer></ToolbarSpacer>
+                    <Button icon="sap-icon://navigation-left-arrow" />
+                    <Button text="December - 2023" type="Default" press="handleOpenDatePicker" />
+                    <Button icon="sap-icon://navigation-right-arrow" />
+                    <DatePicker
+                        id="idHiddenDate"
+                        hideInput="true"
+                        value="{
+						path: 'dateinput>/date',
+						type: 'sap.ui.model.type.Date',
+                            formatOptions: {
+                                'pattern': 'MM-y'
+                            }
+					    }"
+                        change="onChangeDateHandler" />
+                </tnt:ToolHeader>
+            </tnt:header>
+            <!-- <tnt:subHeader>
+                <tnt:ToolHeader id="idTh2">
+                <ToolbarSpacer></ToolbarSpacer>
+                    <Button id="id2" text="This is tool sub header" />
+                </tnt:ToolHeader>
+            </tnt:subHeader> -->
+            <tnt:subHeader>
+			<tnt:ToolHeader visible="{= !${view>/sideNavigation}}">
+                    <IconTabHeader
+                            
+                            select=".onItemSelect"
+                            mode="Inline">
+                        <layoutData>
+                            <OverflowToolbarLayoutData priority="NeverOverflow" shrinkable="true" />
+                        </layoutData>
+                        <items>
+                            <IconTabFilter
+                                    text="Projects"
+                                    key="project"
+                                    items="{/Projects}"
+                                    >
+                                <items>
+                                    <IconTabFilter
+                                            tooltip="{ProjectName}"
+                                            text="{ProjectDescription}"
+                                            key="{ID}">
+                                    </IconTabFilter>
+                                </items>
+                            </IconTabFilter>
+                            <IconTabFilter
+                                    text="Stand-In"
+                                    key="dummy"
+                                    items="{/DummyProjects}">
+                                <items>
+                                    <IconTabFilter
+                                           tooltip="{ProjectName}"
+                                            text="{ProjectDescription}"
+                                            key="{ID}">
+                                    </IconTabFilter>
+                                </items>
+                            </IconTabFilter>
+                            <IconTabFilter
+                                    text="General Hours"
+                                    key="general"
+                                    items="{/GeneralProjects}">
+                                <items>
+                                    <IconTabFilter
+                                            tooltip="{ProjectName}"
+                                            text="{ProjectDescription}"
+                                            key="{ID}">
+                                    </IconTabFilter>
+                                </items>
+                            </IconTabFilter>
+                        </items>
+                    </IconTabHeader>
+                </tnt:ToolHeader>
+            </tnt:subHeader>
+            <tnt:sideContent>   
+                <tnt:SideNavigation
+				visible="{view>/sideNavigation}"
+				expanded="true"
+				selectedKey="{/selectedKey}"
+                >
+				<tnt:NavigationList>
+                    <tnt:NavigationListItem
+                        key="total"
+                        icon="sap-icon://simulate"
+                        hasExpander="false"
+                        text="Overview"
+                        select="handleTotalSelect"
+                        id="idNavigationTotal"
+                    />
+					<tnt:NavigationListItem
+						text="Project"
+						icon="sap-icon://building"
+						enabled="true"
+						key="project"
+                        items="{/Projects}">
+                        <tnt:items>
+                            <tnt:NavigationListItem
+							text="{ProjectDescription}"
+                            tooltip="{ProjectName}"
+							key="{ID}"
+                            select="handleProjectSelect"
+							enabled="true" />
+                        </tnt:items>
+					</tnt:NavigationListItem>
+                    <tnt:NavigationListItem
+						text="Stand-In Projects"
+						icon="sap-icon://person-placeholder"
+						enabled="true"
+						key="dummy"
+                        items="{/DummyProjects}">
+                        <tnt:items>
+                            <tnt:NavigationListItem
+							text="{ProjectDescription}"
+                            tooltip="{ProjectName}"
+							key="{ID}"
+                            select="handleStandInProject"
+							enabled="true" />
+                        </tnt:items>
+					</tnt:NavigationListItem>
+                    <tnt:NavigationListItem
+						text="General Hours"
+						icon="sap-icon://family-care"
+						enabled="true"
+						key="general"
+                        items="{/GeneralProjects}">
+                        <tnt:items>
+                            <tnt:NavigationListItem
+							text="{ProjectDescription}"
+                            tooltip="{ProjectName}"
+							key="{ID}"
+                            select="handleGeneralSelect"
+							enabled="true" />
+                        </tnt:items>
+					</tnt:NavigationListItem>
+				</tnt:NavigationList>
+                <tnt:fixedItem>
+					<tnt:NavigationList>
+                        <tnt:items>
+						    <tnt:NavigationListItem text="Help" icon="sap-icon://learning-assistant" />
+                        </tnt:items>
+					</tnt:NavigationList>
+				</tnt:fixedItem>
+			</tnt:SideNavigation>
+            </tnt:sideContent>
+            <tnt:mainContents>
+                <App id="app" />
+            </tnt:mainContents>
+        </tnt:ToolPage>
+</mvc:View>

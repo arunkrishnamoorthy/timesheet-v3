@@ -85,6 +85,16 @@ annotate service.EmployeeData with @(
                         Low: 'S'
                     }
                 ]
+            },
+            {
+                PropertyName: 'Country',
+                Ranges: [
+                    {
+                        Sign : #I,
+                        Option: #EQ,
+                        Low: 'BE'
+                    }
+                ]
             }
         ]
    }

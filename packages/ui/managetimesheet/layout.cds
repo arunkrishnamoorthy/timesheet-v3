@@ -6,7 +6,6 @@ annotate service.EmployeeData with @(
         EmployeeType, 
         Country,
         PersonnelNumber,
-        Unit,
         LockStatus,
     ]
 );

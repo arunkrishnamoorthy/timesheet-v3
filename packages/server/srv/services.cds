@@ -19,13 +19,27 @@ using from '../../ui/managetimesheet/variants';
 using from '../../ui/managetimesheet/label';
 using from '../../ui/managetimesheet/value-help';
 
-// Superlock Belgium 
+// Superlock Netherland 
+using from '../../ui/superlocknetherland/annotations';
+using from '../../ui/superlocknetherland/variants';
+using from '../../ui/superlocknetherland/layout_locked';
+using from '../../ui/superlocknetherland/layout_unlocked';
+using from '../../ui/superlocknetherland/layout_superlock';
+
+// Superlock Luxemburg
+using from '../../ui/superlockluxemburg/annotations';
+using from '../../ui/superlockluxemburg/variants';
+using from '../../ui/superlockluxemburg/layout_locked';
+using from '../../ui/superlockluxemburg/layout_unlocked';
+using from '../../ui/superlockluxemburg/layout_superlock';
+
+// Superlock Belgium
 using from '../../ui/superlockbelgium/annotations';
 using from '../../ui/superlockbelgium/variants';
-using from '../../ui/superlockbelgium/layout_belgium';
 using from '../../ui/superlockbelgium/layout_locked';
 using from '../../ui/superlockbelgium/layout_unlocked';
 using from '../../ui/superlockbelgium/layout_superlock';
+
 
 // Superlock manage
 using from '../../ui/managesuperlock/annotations';

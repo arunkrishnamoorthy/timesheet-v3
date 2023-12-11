@@ -68,6 +68,18 @@ modules:
       - comordinatsuimanagesuperlock.zip
       name: comordinatsuimanagesuperlock
       target-path: resources/
+    - artifacts:
+      - comordinatsuimytimesheet.zip
+      name: comordinatsuimytimesheet
+      target-path: resources/
+    - artifacts:
+      - comordinatsuisuperlocknetherland.zip
+      name: comordinatsuisuperlocknetherland
+      target-path: resources/
+    - artifacts:
+      - comordinatsuisuperlockluxemburg.zip
+      name: comordinatsuisuperlockluxemburg
+      target-path: resources/
 - name: comordinatsuiassignprojectcodes
   type: html5
   path: ../ui/assignprojectcodes/
@@ -121,6 +133,36 @@ modules:
 - name: comordinatsuimanagesuperlock
   type: html5
   path: app/managesuperlock
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comordinatsuimytimesheet
+  type: html5
+  path: app/mytimesheet
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comordinatsuisuperlocknetherland
+  type: html5
+  path: app/superlocknetherland
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: comordinatsuisuperlockluxemburg
+  type: html5
+  path: app/superlockluxemburg
   build-parameters:
     build-result: dist
     builder: custom

@@ -112,7 +112,8 @@
                     "route": "YY1_DUMMYPROJECTObjectPage"
                   }
                 }
-              }
+              },
+              "initialLoad": true
             }
           }
         },

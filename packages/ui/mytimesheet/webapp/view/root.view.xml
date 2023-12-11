@@ -1,0 +1,13 @@
+<mvc:View controllerName="com.ordinats.ui.mytimesheet.controller.root"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="This is root view" showFooter="true">
+        <footer>
+            <Bar class="sapUiTinyMarginBottom">
+                <contentRight>
+                    <Button text="Submit" type="Emphasized" />
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
+</mvc:View>
