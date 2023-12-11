@@ -7,6 +7,7 @@
             <tnt:header>
 		    	<tnt:ToolHeader id="idTh1" class="sapUiContentPadding">
                     <Button id="id1" icon="sap-icon://expand-all" press="handleToggle" />
+                    <Text text="TODO:Name of the selected project goes here..."></Text>
                     <ToolbarSpacer></ToolbarSpacer>
                     <Button icon="sap-icon://navigation-left-arrow" />
                     <Button text="December - 2023" type="Default" press="handleOpenDatePicker" />

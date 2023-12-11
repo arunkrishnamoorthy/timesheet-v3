@@ -1,11 +1,60 @@
 <mvc:View controllerName="com.ordinats.ui.mytimesheet.controller.root"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
-    <Page id="page" title="This is root view" showFooter="true">
+    <Page id="idTimesheetView" showHeader="false" showFooter="true">
+        <Table id="idTimesheetTable">
+            <columns>
+                <Column>
+                    <Text text="Day"/>
+                </Column>
+                <Column>
+                    <Text text="Note"/>
+                </Column>
+                <Column>
+                    <Text text="Others"/>
+                </Column>
+                <Column>
+                    <Text text="Hours"/>
+                </Column>
+                <Column>
+                    <Text text="OT Low"/>
+                </Column>
+                <Column>
+                    <Text text="OT High"/>
+                </Column>
+                <Column>
+                    <Text text="SB Low"/>
+                </Column>
+                <Column>
+                    <Text text="SB High"/>
+                </Column>
+                <Column>
+                    <Text text="Standby"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <Text text="" />
+                    <Input value="" />
+                    <Text text="" />
+                    <TimePicker placeholder="00:00"/>
+                    <TimePicker placeholder="00:00"/>
+                    <TimePicker placeholder="00:00"/>
+                    <TimePicker placeholder="00:00"/>
+                    <TimePicker placeholder="00:00"/>
+                    <CheckBox></CheckBox>
+                </ColumnListItem>
+            </items>
+        </Table>
         <footer>
             <Bar class="sapUiTinyMarginBottom">
+                <contentLeft>
+                    <Button text="Superlocked" icon="sap-icon://locked" type="Reject" enabled="false"/>
+                </contentLeft>
                 <contentRight>
+                    <Button icon="sap-icon://print" press="handlePrint" />
                     <Button text="Submit" type="Emphasized" />
+                    <Button text="Close Month" icon="sap-icon://locked" type="Accept" enabled="false"/>
                 </contentRight>
             </Bar>
         </footer>
