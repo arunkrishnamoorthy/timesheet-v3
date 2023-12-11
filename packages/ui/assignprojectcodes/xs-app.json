@@ -1,0 +1,30 @@
+{
+    "welcomeFile": "ui/index.html",
+    "authenticationMethod": "route",
+    "routes": [
+      {
+        "source": "^/ui/(.*)$",
+        "target": "/ui/$1",
+        "localDir": "../",
+        "cacheControl": "no-cache, no-store, must-revalidate"
+      },
+      {
+        "source": "^/appconfig/(.*)$",
+        "target": "/ui/appconfig/$1",
+        "localDir": "../",
+        "cacheControl": "no-cache, no-store, must-revalidate"
+      },
+      {
+        "source": "^/user-api(.*)",
+        "target": "$1",
+        "service": "sap-approuter-userapi"
+      },
+      {
+        "source": "^/(.*)$",
+        "target": "$1",
+        "destination": "srv-api",
+        "csrfProtection": true
+      }
+    ]
+  }
+  

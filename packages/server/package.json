@@ -161,10 +161,10 @@
         }
     },
     "sapux": [
-        "app/superlockbelgium",
-        "app/superlockbelgium",
-        "app/managesuperlock",
-        "app/superlocknetherland",
-        "app/superlockluxemburg"
+        "../ui/superlockbelgium",
+        "../ui/superlockbelgium",
+        "../ui/managesuperlock",
+        "../ui/superlocknetherland",
+        "../ui/superlockluxemburg"
     ]
 }

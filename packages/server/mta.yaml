@@ -49,16 +49,16 @@ modules:
     build-result: resources
     requires:
     - artifacts:
+      - comordinatsuiassignprojectcodes.zip
+      name: comordinatsuiassignprojectcodes
+      target-path: resources/
+    - artifacts:
       - comordinatsuimanagestandinui.zip
       name: comordinatsuimanagestandinui
       target-path: resources/
     - artifacts:
       - comordinatsuimanagetimesheet.zip
       name: comordinatsuimanagetimesheet
-      target-path: resources/
-    - artifacts:
-      - beligumworklist.zip
-      name: beligumworklist
       target-path: resources/
     - artifacts:
       - comordinatsuisuperlockbelgium.zip
@@ -102,17 +102,7 @@ modules:
     supported-platforms: []
 - name: comordinatsuimanagetimesheet
   type: html5
-  path: app/managetimesheet
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []
-- name: beligumworklist
-  type: html5
-  path: app/beligumworklist
+  path: ../ui/managetimesheet
   build-parameters:
     build-result: dist
     builder: custom
@@ -122,7 +112,7 @@ modules:
     supported-platforms: []
 - name: comordinatsuisuperlockbelgium
   type: html5
-  path: app/superlockbelgium
+  path: ../ui/superlockbelgium
   build-parameters:
     build-result: dist
     builder: custom
@@ -132,7 +122,7 @@ modules:
     supported-platforms: []
 - name: comordinatsuimanagesuperlock
   type: html5
-  path: app/managesuperlock
+  path: ../ui/managesuperlock
   build-parameters:
     build-result: dist
     builder: custom
@@ -142,7 +132,7 @@ modules:
     supported-platforms: []
 - name: comordinatsuimytimesheet
   type: html5
-  path: app/mytimesheet
+  path: ../ui/mytimesheet
   build-parameters:
     build-result: dist
     builder: custom
@@ -152,7 +142,7 @@ modules:
     supported-platforms: []
 - name: comordinatsuisuperlocknetherland
   type: html5
-  path: app/superlocknetherland
+  path: ../ui/superlocknetherland
   build-parameters:
     build-result: dist
     builder: custom
@@ -162,7 +152,7 @@ modules:
     supported-platforms: []
 - name: comordinatsuisuperlockluxemburg
   type: html5
-  path: app/superlockluxemburg
+  path: ../ui/superlockluxemburg
   build-parameters:
     build-result: dist
     builder: custom
