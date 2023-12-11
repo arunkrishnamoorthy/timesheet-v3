@@ -1,7 +1,6 @@
 const cds = require("@sap/cds");
 const passport = require("passport");
 const xsenv = require("@sap/xsenv");
-const express = require("express");
 
 var xsuaaCredentials = false;
 // if (process.env.NODE_ENV === "production") {

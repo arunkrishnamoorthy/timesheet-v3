@@ -7,7 +7,8 @@ const { Yy1_ProjectStaffing_2Api } = require('../lib/YY1_PROJECTSTAFFING_2_CDS/Y
 const { or, and } = require('@sap-cloud-sdk/odata-v2');
 
 module.exports = async (srv) => {
-    const dummyproject = await cds.connect.to("YY1_DUMMYPROJECT_CDS");
+    
+    // const dummyproject = await cds.connect.to("YY1_DUMMYPROJECT_CDS");
 
     /**
      * Set the logged in user information
@@ -96,7 +97,7 @@ module.exports = async (srv) => {
     /**
      * Get general projects
      */
-    srv.on("READ","GeneralProjects", async(req) => {
+    srv.on("READ","GeneralProjects", async() => {
         let result = [];
         const taskapi  = new Yy1_TimeSheetTaskTypeApi();
         let languageFilters = [];

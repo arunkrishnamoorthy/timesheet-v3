@@ -6,7 +6,7 @@
  * code data as an when required in the Service handlers. This class is instantiated once during the start of the application
  */
 const { CompanyCodeApi } = require('../../lib/API_COMPANYCODE_SRV/CompanyCodeApi');
-const { or, and } = require('@sap-cloud-sdk/odata-v2');
+const { or } = require('@sap-cloud-sdk/odata-v2');
 const destination = { destinationName: 'S4HC_BTP_DEST' };
 class CompanyCode {
 

@@ -1,6 +1,6 @@
-const cds = require('@sap/cds');
+// const cds = require('@sap/cds');
 
-const UserFactory = require('../helpers/utils/users');
+// const UserFactory = require('../helpers/utils/users');
 const FilterParser = require('../helpers/utils/filterParser');
 const CompanyCodeFactory = require('../helpers/determinations/companycode');
 const { groupBy, aggregateBy } = require('../helpers/utils/objectParser');
@@ -20,7 +20,7 @@ module.exports = async (srv) => {
     /**
      * Employee Types Value help 
      */
-    srv.on("READ", "EmployeeTypes", async(req) => {
+    srv.on("READ", "EmployeeTypes", async() => {
         let result = [];
         result.push({
             code: '1',
@@ -99,8 +99,8 @@ module.exports = async (srv) => {
             endDate = new Date();
         }
         let yearMonth = endDate.getFullYear().toString() + (endDate.getMonth() + 1);
-        let aPeronnelNumberFilters = filterParser.getFilterByProperty("PersonnelNumber");
-        let aUnitFilters = filterParser.getFilterByProperty("Unit");
+        // let aPeronnelNumberFilters = filterParser.getFilterByProperty("PersonnelNumber");
+        // let aUnitFilters = filterParser.getFilterByProperty("Unit");
         let aEmployeTypeConditions = filterParser.getFilterByProperty("EmployeeType");
         let aCountryFilterCurrentUser = [];
         aCountryFilters.forEach((country) => {
@@ -162,8 +162,8 @@ module.exports = async (srv) => {
                 });
                 availabilityData.push(await availabilityAPI.requestBuilder()
                     .getAll()
-                    .filter(and
-                        (
+                    .filter(
+                        and(
                             or(...employeeFilter),
                             or(...periodFilter),
                             or(...companyFilters)
@@ -179,8 +179,8 @@ module.exports = async (srv) => {
             });
             availabilityData = await availabilityAPI.requestBuilder()
                 .getAll()
-                .filter(and
-                    (
+                .filter(
+                    and(
                         or(...employeeFilter),
                         or(...periodFilter),
                         or(...companyFilters)

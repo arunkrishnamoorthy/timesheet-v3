@@ -26,9 +26,9 @@ module.exports = async (srv) => {
      * Get Dummy Project
      */
     srv.on("READ", "YY1_DUMMYPROJECT", (req) => {
-        let user = UserFactory.getInstance(req.user.id);
-        let PersonWorkAgreement = user.getPersonalWorkAgreement();
-        let where = cds.parse.expr(`PersonnelNumber = ${PersonWorkAgreement}`);
+        // let user = UserFactory.getInstance(req.user.id);
+        // let PersonWorkAgreement = user.getPersonalWorkAgreement();
+        // let where = cds.parse.expr(`PersonnelNumber = ${PersonWorkAgreement}`);
         //TODO: The person work agreement has to be added to the filter        
         return dummyproject.tx(req).run(req.query);
     });

@@ -16,7 +16,7 @@ class User {
      * @returns {UserName} String
      */
     getUserName() {
-        return user.UserName;
+        return this.user.UserName;
     }
 
     /**

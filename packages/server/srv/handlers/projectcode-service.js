@@ -11,7 +11,7 @@ module.exports = async (srv) => {
     /**
      * Get Project codes
      */
-    srv.on("READ", "ProjectCodes", async (req, res) => {
+    srv.on("READ", "ProjectCodes", async (req) => {
 
         /** Replace the field names in CAP service, to match with S4 cloud field names  */
         let whereExpression = req.query.SELECT.where;
@@ -119,7 +119,7 @@ module.exports = async (srv) => {
     * Handler for the Value help entities, based on the Dummy Project Business Object. 
     * This implementation handles the entity sets: Customer, Employees and Projects
     */
-    srv.on("READ", ["Customers", "Employees", "Projects"], async (req, res) => {
+    srv.on("READ", ["Customers", "Employees", "Projects"], async (req) => {
         const dummyproject = await cds.connect.to("YY1_DUMMYPROJECT_CDS");
         const projecttime = await cds.connect.to("YY1_DUMMYPROJECTTIME3_CDS");
         let entity = req.query.SELECT.from.ref[0].split(".").reverse().at(0);
@@ -219,12 +219,12 @@ module.exports = async (srv) => {
 
     srv.on("CopyAssignment", async (req) => {
         // req.error(400);
-        const {
-            PROJECT_ID: DummyProjectId,
-            TIME_ID: DummyProjectTimeId,
-            PERSON_NUMBER: PersonnelNumber,
-            WBS_ELEMENT: WBSCode } = req.data;
-        const timesheet = await cds.connect.to("API_MANAGE_WORKFORCE_TIMESHEET");
+        // const {
+        //     PROJECT_ID: DummyProjectId,
+        //     TIME_ID: DummyProjectTimeId,
+        //     PERSON_NUMBER: PersonnelNumber,
+        //     WBS_ELEMENT: WBSCode } = req.data;
+        // const timesheet = await cds.connect.to("API_MANAGE_WORKFORCE_TIMESHEET");
 
         //...blah,..blah..blah...all the existing logic goes here...
 
@@ -240,7 +240,7 @@ module.exports = async (srv) => {
         // then equal to. For the date we require a condition greater than and less than. with Value list annotation
         // not expecting to handle that,the expression is overwritten in the CAP to modify the 
         let where = req.query.SELECT.where;
-        for (index in where) {
+        for ( let index in where) {
             let expr = where[index];
             if (expr && expr.ref) {
                 if (expr.ref.indexOf('StartDate') >= 0) {

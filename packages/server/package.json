@@ -33,6 +33,8 @@
         "undeploy": "cf undeploy ordinats --delete-services --delete-service-keys --delete-service-brokers",
         "build": "rimraf resources mta_archives && mbt build --mtar archive",
         "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "lint:cds": "cds lint .",
+        "lint:srv": "npx eslint 'srv/**'", 
         "watch-managestandinui": "cds watch --open managestandinui/webapp/index.html?sap-ui-xx-viewCache=false",
         "watch-managetimesheet": "cds watch --open managetimesheet/webapp/index.html?sap-ui-xx-viewCache=false",
         "watch-beligumworklist": "cds watch --open beligumworklist/webapp/index.html?sap-ui-xx-viewCache=false",
